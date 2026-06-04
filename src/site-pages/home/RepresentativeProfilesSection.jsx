@@ -44,7 +44,7 @@ export function RepresentativeProfilesSection() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.32em] text-[#0052FF]">Available Roster Preview</p>
-            <h2 className="mt-4 font-display text-3xl font-black tracking-tight text-slate-950 sm:text-3xl">Representative Engineer Profiles</h2>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-3xl">Representative Engineer Profiles</h2>
           </div>
           <LinkButton
             to="/engineers"

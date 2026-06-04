@@ -46,7 +46,7 @@ function TimelineStep({ step, isLast }) {
       <div className="pt-1">
         <h3 className="font-display text-base font-bold leading-tight text-slate-950">{step.title}</h3>
         <div className="mt-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:gap-3">
-          <span className="font-display text-4xl font-black leading-none tracking-tight text-[#0052FF]">{step.metric}</span>
+          <span className="font-display text-4xl font-bold leading-none tracking-tight text-[#0052FF]">{step.metric}</span>
           <span className="pb-1 text-sm leading-6 text-slate-500">{step.description}</span>
         </div>
       </div>
@@ -60,7 +60,7 @@ export function VettingProcessSection() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.25fr_0.95fr] lg:gap-20 lg:px-8 lg:py-24">
         <div>
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Vetting Process</p>
-          <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
             How we vet every engineer.
           </h2>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
@@ -76,7 +76,7 @@ export function VettingProcessSection() {
 
         <div className="flex flex-col justify-center">
           <div className="rounded-2xl border border-slate-200 bg-white/70 p-7 shadow-[0_10px_28px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
-            <h3 className="font-display text-4xl font-black leading-none tracking-tight text-slate-950">Only the top 1.2%</h3>
+            <h3 className="font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Only the top 1.2%</h3>
             <p className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">
               Of applicants become fully vetted HireInfinity talent.
             </p>

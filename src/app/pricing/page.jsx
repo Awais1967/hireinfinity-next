@@ -103,7 +103,7 @@ function HeroSection() {
         <Award className="h-3.5 w-3.5" />
         Fully Audited Financial Equivalents
       </span>
-      <h1 className="mx-auto mt-6 max-w-4xl font-display text-5xl font-black leading-[0.98] tracking-tight text-slate-950 sm:text-6xl">
+      <h1 className="mx-auto mt-6 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-6xl">
         Clear, Flat pricing.
         <span className="block text-[#0052FF]">No onboarding fees.</span>
       </h1>
@@ -143,7 +143,7 @@ function BillingStreamSection() {
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="text-center">
         <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Rate Model Density</p>
-        <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950">Select Your Billing Stream</h2>
+        <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Select Your Billing Stream</h2>
         <p className="mt-4 text-base leading-7 text-slate-600">Convert complex technical layouts into scalable budgets with three custom pricing formats.</p>
 
         <div className="mx-auto mt-9 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1 shadow-sm">
@@ -200,7 +200,7 @@ function ProtectionSection() {
       <div className="grid gap-10 rounded-3xl bg-[#101827] p-8 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] lg:grid-cols-[0.9fr_1.5fr] lg:p-12">
         <div className="flex flex-col justify-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#5b8cff]">W-2 vs C-to-C Compliance</p>
-          <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight">Full USA Registered Protection</h2>
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight">Full USA Registered Protection</h2>
           <p className="mt-6 text-base leading-7 text-slate-200">
             HireInfinity is a registered LLC entity based in the United States. We manage full local compliance setups, standard NDAs, IP warranty transfers, and provide secure billing formats.
           </p>
@@ -235,7 +235,7 @@ function ComparisonSection() {
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="text-center">
         <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Financial Benchmark Compare</p>
-        <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950">How we compare on cost & rigidity</h2>
+        <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">How we compare on cost & rigidity</h2>
         <p className="mt-4 font-mono text-sm text-slate-500">Comprehensive analysis vs traditional platforms</p>
       </div>
 
@@ -274,7 +274,7 @@ function FinalCtaSection() {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
       <div className="rounded-3xl bg-[#070d1d] px-6 py-14 text-center text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] sm:px-10 lg:px-16">
-        <h2 className="mx-auto max-w-2xl font-display text-4xl font-black leading-tight tracking-tight">Ready to unblock your product roadmap?</h2>
+        <h2 className="mx-auto max-w-2xl font-display text-4xl font-bold leading-tight tracking-tight">Ready to unblock your product roadmap?</h2>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-200">
           Our vetting panel holds immediate contractor availability lists across Next.js, FastAPI, Node, React Native and QA SDET specialties. Book a call to meet matching profiles.
         </p>

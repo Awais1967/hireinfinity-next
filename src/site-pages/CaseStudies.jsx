@@ -33,7 +33,7 @@ export function CaseStudies() {
                 </div>
                 <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
                   <span className="block font-mono text-[10px] uppercase tracking-widest text-slate-400">Key metric achieved</span>
-                  <p className="mt-1 font-display text-lg font-black text-emerald-600">{study.metric}</p>
+                  <p className="mt-1 font-display text-lg font-bold text-emerald-600">{study.metric}</p>
                 </div>
                 <div>
                   <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400">Engagement Summary</h4>
@@ -70,7 +70,7 @@ export function CaseStudies() {
             </div>
             <div className="flex max-w-fit items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 p-3 font-mono text-xs">
               <span className="text-slate-500">Active Scale Selected:</span>
-              <span className="font-black text-[#0052FF]">{active[1]}</span>
+              <span className="font-bold text-[#0052FF]">{active[1]}</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function CaseStudies() {
               <div className="flex flex-col justify-between rounded-xl border border-blue-100 bg-blue-50/40 p-5">
                 <div>
                   <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-[#0052FF]">Special pilot offer cost</span>
-                  <p className="mt-2 font-display text-2xl font-black text-[#0052FF]">
+                  <p className="mt-2 font-display text-2xl font-bold text-[#0052FF]">
                     {active[5]} <span className="text-xs font-normal text-slate-500">for 2-week trial</span>
                   </p>
                   <p className="mt-1 text-[10px] text-slate-500">Saves over 50% compared to typical local agencies.</p>
@@ -125,6 +125,12 @@ export function CaseStudies() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mx-auto max-w-5xl border-y border-slate-200 px-4 py-2 text-center">
+          <p className="mx-auto max-w-4xl font-mono text-[11px] leading-6 text-slate-600">
+            <span className="font-bold text-slate-800">Privacy Shield Note:</span> Client names anonymized on request. Real technical scopes, architecture outcomes, and metric ratios have been audited and certified by Infinity Softwares Delivery.
+          </p>
         </div>
 
         <div className="mx-auto max-w-4xl rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center text-white shadow-lg sm:p-12">

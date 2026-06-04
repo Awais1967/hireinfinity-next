@@ -99,12 +99,12 @@ export function Engineers() {
   return (
     <div className="min-h-screen bg-[#fafbfc] bg-[radial-gradient(#dbe3ee_1px,transparent_1px)] [background-size:22px_22px]">
       <section className="mx-auto max-w-7xl px-4 pb-12 pt-16 text-center sm:px-6 sm:pb-16 sm:pt-20 lg:px-8">
-        <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#0052FF]">
+        <span className="font-technical inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold text-[#0052FF]">
           <CalendarDays className="h-3.5 w-3.5" />
           Real-Time Pipeline Engagements
         </span>
-        <h1 className="mt-6 font-display text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">What we staff.</h1>
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-700 sm:text-xl">
+        <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 md:text-5xl lg:text-6xl">What we staff.</h1>
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-slate-700 md:text-xl">
           Choose from over 15+ modern software specialties. Every candidate profile type is thoroughly vetted by technical panels and carries a full US daylight working schedule.
         </p>
       </section>

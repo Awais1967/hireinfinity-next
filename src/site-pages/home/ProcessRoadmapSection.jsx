@@ -21,7 +21,7 @@ function ProcessCard({ step, index }) {
       className="group relative min-h-[272px] overflow-hidden rounded-xl border border-white/80 bg-white/90 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.07)] ring-1 ring-slate-950/[0.03] backdrop-blur transition-colors hover:border-blue-200 hover:bg-white sm:p-7"
     >
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0052FF] via-sky-400 to-emerald-400 opacity-75 transition-opacity group-hover:opacity-100" />
-      <div className="pointer-events-none absolute right-5 top-4 font-display text-6xl font-black leading-none text-slate-100 transition-colors group-hover:text-blue-50 sm:text-7xl">
+      <div className="pointer-events-none absolute right-5 top-4 font-display text-6xl font-bold leading-none text-slate-100 transition-colors group-hover:text-blue-50 sm:text-7xl">
         {index + 1}
       </div>
 
@@ -51,7 +51,7 @@ export function ProcessRoadmapSection() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <motion.div variants={fadeUp} className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Speed Meets Quality</p>
-          <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
             Unblock your product roadmap in 4 steps
           </h2>
         </motion.div>

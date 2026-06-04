@@ -70,7 +70,7 @@ export function Home() {
             <Sparkles className="h-3.5 w-3.5" />
             US Registered firm · SOC2 compliance ready
           </motion.span>
-          <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-black leading-[0.98] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
             <span className="block mb-3">Senior engineers.</span>
             <span className="block text-[#0052FF] mb-1">Ready in 5 days.</span>
             <span className="block mb-1">70% less than a US hire.</span>

@@ -75,7 +75,7 @@ export function PricingCalculator() {
                 {activeCount} Specialists Active
               </span>
             </div>
-            <h2 className="mt-4 font-display text-2xl font-black tracking-tight text-slate-950">Interactive Cost & Custom Savings Calculator</h2>
+            <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-slate-950">Interactive Cost & Custom Savings Calculator</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">Modify counts or choose a preset to construct your ideal squad and compare live rates instantly.</p>
           </div>
 
@@ -218,7 +218,7 @@ function MatrixCard({ tone, label, value, detail, amount }) {
     <div className={`rounded-xl border p-5 ${styles[tone]}`}>
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-[11px] font-bold uppercase tracking-wider">{label}</p>
-        <p className="font-mono text-lg font-black sm:text-xl">{value}</p>
+        <p className="font-mono text-lg font-bold sm:text-xl">{value}</p>
       </div>
       <div className="mt-5 flex items-center justify-between gap-4 font-mono text-[11px] text-slate-600">
         <span>{detail}</span>

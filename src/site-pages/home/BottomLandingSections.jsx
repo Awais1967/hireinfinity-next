@@ -2,34 +2,108 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  ChevronDown,
+  Cloud,
+  Code2,
+  Container,
+  Database,
+  Gauge,
+  Infinity,
+  Laptop,
+  Layers3,
+  Monitor,
+  Palette,
+  Server,
+  Smartphone,
+  TabletSmartphone,
+  Terminal,
+  Zap,
+} from "lucide-react";
 import { LinkButton } from "../../common/ui/LinkButton";
 import { landingFaqs, technologyChips } from "../../constants/mockData";
 import { fadeUp, staggerContainer } from "../../common/ui/animationVariants";
 
+const technologyFilters = [
+  { label: "All Specs", icon: Zap, active: true },
+  { label: "Web (FE & BE)", icon: Laptop },
+  { label: "Mobile Units", icon: Smartphone },
+  { label: "DevOps & SRE", icon: Cloud },
+  { label: "QA Automation", icon: Bot },
+];
+
+const technologyIconStyles = {
+  React: ["text-cyan-500", Infinity],
+  "Next.js": ["text-slate-950", Terminal],
+  "Node.js": ["text-emerald-600", Server],
+  Python: ["text-sky-500", Code2],
+  Flutter: ["text-blue-500", Smartphone],
+  "React Native": ["text-cyan-500", TabletSmartphone],
+  Laravel: ["text-rose-500", Layers3],
+  Figma: ["text-orange-500", Palette],
+  AWS: ["text-amber-500", Cloud],
+  DevOps: ["text-indigo-500", Infinity],
+  "QA Automation": ["text-red-500", Gauge],
+  TypeScript: ["text-blue-600", Code2],
+  Kubernetes: ["text-blue-500", Container],
+  FastAPI: ["text-teal-500", Zap],
+  GCP: ["text-sky-500", Cloud],
+  PostgreSQL: ["text-blue-500", Database],
+  Terraform: ["text-violet-500", Layers3],
+};
+
+const displayedTechnologyChips = [...technologyChips, "GCP", "PostgreSQL", "Terraform"];
+
 function TechnologyChips() {
   return (
     <motion.section className="bg-[#f5f6f8]" initial="hidden" animate="visible" variants={staggerContainer}>
-      <div className="mx-auto max-w-5xl px-4 pb-14 pt-8 text-center sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
-        <motion.div variants={fadeUp}>
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">EXPERIENCED TECHNOLOGIES</p>
-          <h2 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl">
-            We staff 15+ complex modern frameworks & design files
-          </h2>
-        </motion.div>
+      <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
+        <div className="rounded-3xl border border-blue-100 bg-[#eef2f6] px-5 py-10 text-center shadow-[0_12px_32px_rgba(15,23,42,0.035)] sm:px-8 sm:py-12 lg:px-14">
+          <motion.div variants={fadeUp}>
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">EXPERIENCED TECHNOLOGIES</p>
+            <h2 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
+              Supporting the stacks startups actually use.
+            </h2>
+          </motion.div>
 
-        <motion.div variants={staggerContainer} className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-3">
-          {technologyChips.map((chip) => (
-            <motion.span
-              key={chip}
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/80 px-4 py-2.5 font-mono text-xs font-bold text-slate-700 shadow-sm"
-            >
-              <span className="h-2 w-2 rounded-full bg-[#0052FF]" />
-              {chip}
-            </motion.span>
-          ))}
-        </motion.div>
+          <motion.div variants={staggerContainer} className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-2">
+            {technologyFilters.map((filter) => {
+              const Icon = filter.icon;
+
+              return (
+                <motion.span
+                  key={filter.label}
+                  variants={fadeUp}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-[11px] font-bold shadow-sm ${
+                    filter.active ? "border-[#0052FF] bg-[#0052FF] text-white shadow-[0_10px_20px_rgba(0,82,255,0.18)]" : "border-slate-200 bg-white/80 text-slate-700"
+                  }`}
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  {filter.label}
+                </motion.span>
+              );
+            })}
+          </motion.div>
+
+          <motion.div variants={staggerContainer} className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
+            {displayedTechnologyChips.map((chip) => {
+              const [iconColor, Icon = Monitor] = technologyIconStyles[chip] || ["text-[#0052FF]", Monitor];
+
+              return (
+                <motion.span
+                  key={chip}
+                  variants={fadeUp}
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/75 px-4 py-2.5 font-mono text-xs font-bold text-slate-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white"
+                >
+                  <Icon className={`h-4 w-4 ${iconColor}`} />
+                  {chip}
+                </motion.span>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );
@@ -43,7 +117,7 @@ function FaqAccordion() {
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <motion.div variants={fadeUp} className="text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">COMMON INQUIRIES</p>
-          <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
             Frequently Asked Questions
           </h2>
         </motion.div>
@@ -84,7 +158,7 @@ function FinalCta() {
     <motion.section className="border-b border-slate-200 bg-[#f5f6f8]" initial="hidden" animate="visible" variants={fadeUp}>
       <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 sm:pb-20 lg:px-8">
         <motion.div className="mx-auto max-w-6xl rounded-3xl bg-slate-950 px-6 py-16 text-center shadow-[0_18px_40px_rgba(15,23,42,0.18)] sm:px-10 sm:py-20" variants={fadeUp}>
-          <h2 className="font-display text-4xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
             Start shipping in 5 days.
           </h2>
           <p className="mx-auto mt-7 max-w-2xl text-base font-semibold leading-7 text-slate-400 sm:text-lg">
