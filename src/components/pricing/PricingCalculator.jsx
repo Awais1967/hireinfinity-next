@@ -1,0 +1,229 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import { ArrowRight, Building2, Crown, Gauge, Minus, Palette, Plus, Search, Server, Settings, Sparkles, Zap } from "lucide-react";
+
+const roles = [
+  { id: "frontend-mid", icon: Palette, name: "Frontend Mid-Level", level: "Mid-Level", price: 2650 },
+  { id: "frontend-senior", icon: Sparkles, name: "Frontend Senior", level: "Senior", price: 3800 },
+  { id: "backend-mid", icon: Settings, name: "Full-Stack/Backend Mid-Level", level: "Mid-Level", price: 3000 },
+  { id: "backend-senior", icon: Zap, name: "Full-Stack/Backend Senior", level: "Senior", price: 4500 },
+  { id: "architect", icon: Crown, name: "Staff/CTO-Level Architect", level: "Staff/Lead", price: 6000 },
+  { id: "devops", icon: Server, name: "DevOps & SRE Senior", level: "Senior", price: 4600 },
+  { id: "qa", icon: Search, name: "QA Automation Mid-Level", level: "Mid-Level", price: 2200 },
+];
+
+const presets = [
+  { id: "bootstrap", label: "Bootstrap (2)", icon: Zap, counts: { "frontend-mid": 1, "backend-senior": 1 } },
+  { id: "scale", label: "Scale (5)", icon: Gauge, counts: { "frontend-mid": 1, "frontend-senior": 1, "backend-senior": 1, devops: 1, qa: 1 } },
+  { id: "enterprise", label: "Enterprise (6)", icon: Building2, counts: { "frontend-senior": 1, "backend-mid": 1, "backend-senior": 1, architect: 1, devops: 1, qa: 1 } },
+];
+
+const termOptions = [1, 3, 6, 12];
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function getPresetCounts(presetId) {
+  const preset = presets.find((item) => item.id === presetId) || presets[0];
+  return Object.fromEntries(roles.map((role) => [role.id, preset.counts[role.id] || 0]));
+}
+
+export function PricingCalculator() {
+  const [activePreset, setActivePreset] = useState("bootstrap");
+  const [counts, setCounts] = useState(() => getPresetCounts("bootstrap"));
+  const [term, setTerm] = useState(3);
+
+  const activeCount = useMemo(() => roles.reduce((sum, role) => sum + counts[role.id], 0), [counts]);
+  const monthlyTotal = useMemo(() => roles.reduce((sum, role) => sum + role.price * counts[role.id], 0), [counts]);
+  const agencyMonthly = Math.round(monthlyTotal * 1.885);
+  const onshoreMonthly = Math.round(monthlyTotal * 4.807);
+  const termCommitment = monthlyTotal * term;
+  const savings = Math.max(onshoreMonthly * term - termCommitment, 0);
+
+  function choosePreset(presetId) {
+    setActivePreset(presetId);
+    setCounts(getPresetCounts(presetId));
+  }
+
+  function updateCount(roleId, direction) {
+    setActivePreset("custom");
+    setCounts((current) => ({
+      ...current,
+      [roleId]: Math.max(0, current[roleId] + direction),
+    }));
+  }
+
+  return (
+    <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
+      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-[#f1f4f7] shadow-[0_10px_28px_rgba(15,23,42,0.08)]">
+        <div className="flex flex-col gap-5 border-b border-slate-200 px-5 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#0052FF]">
+                <Zap className="h-3.5 w-3.5" />
+                Custom Squad Generator
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-700">
+                <Building2 className="h-3.5 w-3.5" />
+                {activeCount} Specialists Active
+              </span>
+            </div>
+            <h2 className="mt-4 font-display text-2xl font-black tracking-tight text-slate-950">Interactive Cost & Custom Savings Calculator</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">Modify counts or choose a preset to construct your ideal squad and compare live rates instantly.</p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">Presets:</span>
+            <div className="flex flex-wrap gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1">
+              {presets.map((preset) => {
+                const Icon = preset.icon;
+                const isActive = activePreset === preset.id;
+                return (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    onClick={() => choosePreset(preset.id)}
+                    className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-wider transition-colors ${
+                      isActive ? "bg-[#0052FF] text-white shadow-sm" : "text-slate-700 hover:bg-white"
+                    }`}
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {preset.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-[1.35fr_1fr]">
+          <div className="border-b border-slate-200 p-5 sm:p-8 lg:border-b-0 lg:border-r">
+            <div className="mb-4 grid grid-cols-[1fr_170px] gap-3 border-b border-slate-200 pb-4">
+              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400">
+                Augmentation Profile Role <span className="rounded-full bg-blue-100 px-2 py-1 text-[9px] text-[#0052FF]">{activeCount} configured</span>
+              </p>
+              <p className="hidden font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400 sm:block">Headcount Control</p>
+            </div>
+
+            <div className="divide-y divide-slate-200">
+              {roles.map((role) => {
+                const Icon = role.icon;
+                const count = counts[role.id];
+                return (
+                  <div key={role.id} className="grid gap-4 py-4 sm:grid-cols-[1fr_170px] sm:items-center">
+                    <div className="flex items-center gap-4">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <h3 className="font-display text-base font-bold text-slate-950">{role.name}</h3>
+                        <p className="mt-1 font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                          Level: {role.level} <span className="px-1 text-slate-300">&bull;</span> Starts <span className="text-[#0052FF]">{formatCurrency(role.price)}/mo</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-end gap-4">
+                      <button
+                        type="button"
+                        onClick={() => updateCount(role.id, -1)}
+                        disabled={count === 0}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF] disabled:cursor-not-allowed disabled:opacity-40"
+                        aria-label={`Decrease ${role.name}`}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </button>
+                      <span className="w-4 text-center font-mono text-sm font-bold text-[#0052FF]">{count}</span>
+                      <button
+                        type="button"
+                        onClick={() => updateCount(role.id, 1)}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF]"
+                        aria-label={`Increase ${role.name}`}
+                      >
+                        <Plus className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 grid gap-4 border-t border-slate-200 pt-6 sm:grid-cols-2">
+              <div className="rounded-xl border border-slate-200 bg-white/70 p-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">Engagement Runtime Term</p>
+                <div className="mt-4 grid grid-cols-4 gap-2">
+                  {termOptions.map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setTerm(option)}
+                      className={`rounded-lg px-3 py-2 font-mono text-[10px] font-bold transition-colors ${
+                        term === option ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-500 hover:bg-blue-50 hover:text-[#0052FF]"
+                      }`}
+                    >
+                      {option}m
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-xl border border-slate-200 bg-white/70 p-5">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">Live Setup</p>
+                <p className="mt-3 font-display text-lg font-bold text-slate-950">{activeCount} active specialists</p>
+                <p className="mt-1 text-sm text-slate-500">Direct contractor rates with PM support included.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-5 sm:p-8">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400">Squad Ratio & Live Cost Matrix</p>
+            <div className="mt-5 space-y-4">
+              <MatrixCard tone="blue" label="HireInfinity Subscription" value={`${formatCurrency(monthlyTotal)}/mo`} detail={`Total Term Commitment (${term}m):`} amount={formatCurrency(termCommitment)} />
+              <MatrixCard tone="amber" label="Competitor Dev Agencies" value={`${formatCurrency(agencyMonthly)}/mo`} detail="Traditional Agency Term Cost:" amount={formatCurrency(agencyMonthly * term)} />
+              <MatrixCard tone="red" label="US Onshore US Equivalent" value={`${formatCurrency(onshoreMonthly)}/mo`} detail="US Contractor Term Cost:" amount={formatCurrency(onshoreMonthly * term)} />
+              <MatrixCard tone="emerald" label="Projected Capital Savings" value={`+${formatCurrency(savings)}`} detail="Runway Extension Ratio:" amount="~83% saved" />
+            </div>
+
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+            >
+              Lock In Custom Setup
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <p className="mt-3 text-center font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              Includes full 2-week risk protection trial & PM support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MatrixCard({ tone, label, value, detail, amount }) {
+  const styles = {
+    blue: "border-blue-200 bg-blue-50/60 text-[#0052FF]",
+    amber: "border-amber-200 bg-amber-50/70 text-amber-700",
+    red: "border-red-200 bg-red-50/70 text-red-700",
+    emerald: "border-emerald-200 bg-emerald-50/70 text-emerald-700",
+  };
+
+  return (
+    <div className={`rounded-xl border p-5 ${styles[tone]}`}>
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-mono text-[11px] font-bold uppercase tracking-wider">{label}</p>
+        <p className="font-mono text-lg font-black sm:text-xl">{value}</p>
+      </div>
+      <div className="mt-5 flex items-center justify-between gap-4 font-mono text-[11px] text-slate-600">
+        <span>{detail}</span>
+        <span className="font-bold text-slate-950">{amount}</span>
+      </div>
+    </div>
+  );
+}

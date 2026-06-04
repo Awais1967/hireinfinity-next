@@ -38,12 +38,12 @@ const negativeHighlights = [
 
 function StatStrip() {
   return (
-    <div className="border-y border-slate-200 bg-white shadow-[0_1px_8px_rgba(15,23,42,0.05)]">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-slate-200 px-4 py-5 sm:px-6 md:grid-cols-4 md:divide-y-0 lg:px-8">
+    <div className="bg-[#03071a] shadow-[0_8px_18px_rgba(15,23,42,0.16)]">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-white/10 px-4 py-4 sm:px-6 md:grid-cols-4 md:divide-y-0 md:py-5 lg:px-8">
         {heroComparisonStats.map(([value, label, color]) => (
-          <div key={label} className="px-3 py-4 text-center md:py-1">
+          <div key={label} className="px-3 py-2 text-center md:py-0">
             <div className={`font-display text-4xl font-black leading-none tracking-tight sm:text-5xl ${color}`}>{value}</div>
-            <div className="mt-3 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-400 sm:text-[11px]">{label}</div>
+            <div className="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-500 sm:text-[11px]">{label}</div>
           </div>
         ))}
       </div>
@@ -114,7 +114,8 @@ export function HeroComparisonSection() {
         <motion.div variants={fadeUp} className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">HIRING REIMAGINED</p>
           <h2 className="mt-5 font-display text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl">
-            Why companies are shifting away from traditional pipelines
+            Hiring engineers shouldn't take 3 months.
+
           </h2>
         </motion.div>
 

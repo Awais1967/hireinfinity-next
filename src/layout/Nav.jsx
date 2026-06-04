@@ -13,7 +13,7 @@ export function Nav() {
   const nav = [
     ["How It Works", () => scrollToSection("how-it-works", router)],
     ["Engineers", () => router.push("/engineers")],
-    ["Pricing", () => scrollToSection("pricing", router)],
+    ["Pricing", () => router.push("/pricing")],
     ["FAQ", () => scrollToSection("faq", router)],
     ["Case Studies", () => router.push("/case-studies")],
   ];
@@ -22,9 +22,12 @@ export function Nav() {
     <nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          <LinkButton to="/" className="group flex flex-col text-left">
+          <LinkButton to="/" className="group flex flex-col text-center sm:text-left">
             <span className="font-display text-2xl font-bold tracking-tight text-slate-950 transition-colors group-hover:text-blue-600">
               Hire<span className="text-[#0052FF]">Infinity</span>
+            </span>
+            <span className="-mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-slate-400">
+              A brand of Infinity Softwares
             </span>
           </LinkButton>
 

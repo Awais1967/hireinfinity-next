@@ -13,6 +13,7 @@ import { PricingSection } from "./home/PricingSection";
 import { ProcessRoadmapSection } from "./home/ProcessRoadmapSection";
 import { RepresentativeProfilesSection } from "./home/RepresentativeProfilesSection";
 import { ValueCardsSection } from "./home/ValueCardsSection";
+import { VettingProcessSection } from "./home/VettingProcessSection";
 
 function HeroPanel() {
   return (
@@ -110,6 +111,7 @@ export function Home() {
       <HeroComparisonSection />
       <ProcessRoadmapSection />
       <RepresentativeProfilesSection />
+      <VettingProcessSection />
       <ValueCardsSection />
       <PricingSection />
       <HiringComparisonSection />

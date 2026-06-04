@@ -39,7 +39,7 @@ function ProfileCard({ profile }) {
 
 export function RepresentativeProfilesSection() {
   return (
-    <section className="bg-[#f5f6f8]">
+    <section className="border-y border-slate-200 bg-[#eef1f5]">
       <div className="mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-20 lg:px-8 lg:pt-20 lg:pb-24">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -63,6 +63,16 @@ export function RepresentativeProfilesSection() {
 
         <div className="mt-9 rounded-xl border border-slate-200 bg-white/80 px-5 py-4 text-center text-sm text-slate-700 shadow-sm">
           <span className="font-bold text-slate-950">Note:</span> Representative profiles. We match engineering assets based on your exact product requirements.
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <LinkButton
+            to="/contact"
+            className="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-9 py-4 font-display text-base font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+          >
+            Book a Free Call
+            <ArrowRight className="h-5 w-5" />
+          </LinkButton>
         </div>
       </div>
     </section>

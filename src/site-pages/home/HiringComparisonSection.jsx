@@ -65,7 +65,7 @@ function SuccessStoryCard({ story }) {
       transition={cardHover.transition}
       className="relative flex min-h-[276px] flex-col rounded-xl border border-slate-200 bg-white p-8 shadow-[0_8px_24px_rgba(15,23,42,0.05)]"
     >
-      <div className="absolute -top-4 left-0 px-6 font-serif text-7xl font-black leading-none text-blue-100">â€œ</div>
+      <div className="absolute -top-4 left-0 px-6 font-serif text-7xl font-black leading-none text-blue-100">{"\u201c"}</div>
       <p className="relative z-10 mt-4 text-[15px] italic leading-7 text-slate-700">"{story.quote}"</p>
 
       <div className="relative z-10 mt-auto flex items-center gap-4 pt-10">

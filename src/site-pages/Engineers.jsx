@@ -2,7 +2,18 @@
 
 import React from "react";
 import { useMemo, useState } from "react";
-import { CalendarDays, Cpu, SlidersHorizontal } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  CalendarDays,
+  ClipboardList,
+  CloudCog,
+  Cpu,
+  Monitor,
+  Server,
+  ShieldCheck,
+  SlidersHorizontal,
+  Smartphone,
+} from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
 import { engineers } from "../constants/mockData";
 
@@ -13,14 +24,29 @@ const specialtyFilters = [
   ["mobile", "MOBILE APPS"],
   ["devops", "DEVOPS & SRE"],
   ["qa", "QA AUTOMATION"],
+  ["pm", "PROJECT MANAGER"],
+  ["cto", "FRACTIONAL CTO"],
 ];
 
+const sectorIcons = {
+  frontend: Monitor,
+  backend: Server,
+  mobile: Smartphone,
+  devops: CloudCog,
+  qa: ShieldCheck,
+  pm: ClipboardList,
+  cto: BriefcaseBusiness,
+};
+
 function EngineerCard({ engineer }) {
+  const SectorIcon = sectorIcons[engineer.category] || Cpu;
+
   return (
     <article className="flex min-h-[430px] flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-[0_8px_22px_rgba(15,23,42,0.05)]">
       <div className="flex items-center justify-between gap-4">
-        <span className="rounded border border-blue-200 bg-blue-50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#0052FF]">
-          {engineer.sector}
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-200 bg-blue-50 text-[#0052FF]" title={engineer.sector}>
+          <SectorIcon className="h-4.5 w-4.5" />
+          <span className="sr-only">{engineer.sector}</span>
         </span>
         <span className="whitespace-nowrap font-mono text-xs text-slate-800">Exp: {engineer.experience}</span>
       </div>
@@ -50,7 +76,7 @@ function EngineerCard({ engineer }) {
           to={`/contact?stack=${encodeURIComponent(engineer.sector)}&budget=${encodeURIComponent(engineer.monthly)}`}
           className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-[#0052FF] bg-white px-4 py-3 font-display text-sm font-bold text-[#0052FF] transition-colors hover:bg-blue-50"
         >
-          Request this profile range â†’
+          Request this profile range -&gt;
         </LinkButton>
       </div>
     </article>
