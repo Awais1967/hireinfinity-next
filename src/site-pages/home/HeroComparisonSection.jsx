@@ -39,24 +39,24 @@ const negativeHighlights = [
 
 const processSteps = [
   {
-    step: "STEP 01 — AVAILABLE NOW",
-    number: "01",
+    step: "STEP 1 — AVAILABLE NOW",
+    number: "1",
     title: "Check out profiles",
     description: "Fill out a short interactive form and browse our deep roster of pre-vetted, ready-to-interview developers instantly.",
     icon: UserSearch,
     tone: "blue",
   },
   {
-    step: "STEP 02 — RAPID SPEED",
-    number: "02",
+    step: "STEP 2 — RAPID SPEED",
+    number: "2",
     title: "Interview Developers",
     description: "Share your technical needs, receive 2-3 expert-matched developers within 48 hours, and connect directly.",
     icon: MessagesSquare,
     tone: "blue",
   },
   {
-    step: "STEP 03 — FINAL STEP",
-    number: "03",
+    step: "STEP 3 — FINAL STEP",
+    number: "3",
     title: "Seamless Onboarding",
     description: "Your premium developer integrates directly into your team while we handle legal contracts, payroll, and continuous support.",
     icon: BadgeCheck,

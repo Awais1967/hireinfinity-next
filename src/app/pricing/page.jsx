@@ -2,14 +2,10 @@ import Link from "next/link";
 import {
   ArrowRight,
   Award,
-  BadgeCheck,
   BriefcaseBusiness,
   CheckCircle2,
   Clock3,
-  Cloud,
   Handshake,
-  ShieldCheck,
-  Target,
   Users,
   Zap,
 } from "lucide-react";
@@ -22,11 +18,11 @@ export const metadata = {
 };
 
 const platformBadges = [
-  ["Salesforce", Cloud, "border-sky-200 bg-sky-50 text-sky-700"],
-  ["AWS Cloud", ShieldCheck, "border-amber-200 bg-amber-50 text-amber-700"],
-  ["MS Azure", Cloud, "border-blue-200 bg-blue-50 text-blue-700"],
-  ["Google Cloud", Target, "border-red-200 bg-red-50 text-red-700"],
-  ["ServiceNow", BadgeCheck, "border-slate-200 bg-slate-100 text-slate-700"],
+  ["Salesforce", "https://cdn.simpleicons.org/salesforce/00A1E0", "border-sky-200 bg-sky-50 text-sky-700"],
+  ["AWS Cloud", "https://cdn.simpleicons.org/amazonwebservices/FF9900", "border-amber-200 bg-amber-50 text-amber-700"],
+  ["MS Azure", "https://cdn.simpleicons.org/microsoftazure/0078D4", "border-blue-200 bg-blue-50 text-blue-700"],
+  ["Google Cloud", "https://cdn.simpleicons.org/googlecloud/4285F4", "border-red-200 bg-red-50 text-red-700"],
+  ["ServiceNow", "https://cdn.simpleicons.org/servicenow/81B5A1", "border-slate-200 bg-slate-100 text-slate-700"],
 ];
 
 const trustCards = [
@@ -115,9 +111,9 @@ function HeroSection() {
         Engineers fully experienced & certified across leading cloud environments & SaaS platforms
       </p>
       <div className="mt-5 flex flex-wrap justify-center gap-3">
-        {platformBadges.map(([label, Icon, classes]) => (
+        {platformBadges.map(([label, logo, classes]) => (
           <span key={label} className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-display text-sm font-bold ${classes}`}>
-            <Icon className="h-4 w-4" />
+            <img src={logo} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
             {label}
           </span>
         ))}
@@ -155,7 +151,7 @@ function BillingStreamSection() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-2xl border border-slate-950 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
+      <div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-slate-950 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
         <div className="px-6 py-8 sm:px-8">
           <h3 className="font-display text-2xl font-bold tracking-tight text-slate-950">Staff Augmentation Monthly Flat Rates</h3>
           <p className="mt-2 font-mono text-xs font-medium text-slate-600">Full-time dedicated engineers (160h/month). Billed transparently semi-monthly.</p>
@@ -196,7 +192,7 @@ function BillingStreamSection() {
 
 function ProtectionSection() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="grid gap-10 rounded-3xl bg-[#101827] p-8 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] lg:grid-cols-[0.9fr_1.5fr] lg:p-12">
         <div className="flex flex-col justify-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#5b8cff]">W-2 vs C-to-C Compliance</p>

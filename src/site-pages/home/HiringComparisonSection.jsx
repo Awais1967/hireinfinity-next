@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { LinkButton } from "../../common/ui/LinkButton";
 import { sourcingComparisonRows, successStories } from "../../constants/mockData";
 import { fadeUp, staggerContainer, cardHover } from "../../common/ui/animationVariants";
 
@@ -83,7 +84,7 @@ function SuccessStoryCard({ story }) {
 
 function SuccessStoriesSection() {
   return (
-    <motion.section className="border-t border-slate-200 bg-[#f5f6f8]" variants={staggerContainer} initial="hidden" animate="visible">
+    <motion.section className="border-y border-slate-200 bg-[#f5f6f8]" variants={staggerContainer} initial="hidden" animate="visible">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <motion.div variants={fadeUp} className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">SUCCESS STORIES</p>
@@ -96,6 +97,16 @@ function SuccessStoriesSection() {
           {successStories.map((story) => (
             <SuccessStoryCard key={story.name} story={story} />
           ))}
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-12 flex justify-center">
+          <LinkButton
+            to="/contact"
+            className="inline-flex min-h-14 items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-colors hover:bg-blue-700"
+          >
+            Book a Free Call
+            <ArrowRight className="h-4 w-4" />
+          </LinkButton>
         </motion.div>
       </div>
     </motion.section>

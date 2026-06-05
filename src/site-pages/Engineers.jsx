@@ -109,7 +109,7 @@ export function Engineers() {
         </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-[0_8px_22px_rgba(15,23,42,0.05)] sm:p-8">
           <p className="mb-7 flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-[#0052FF]">
             <SlidersHorizontal className="h-4 w-4" />

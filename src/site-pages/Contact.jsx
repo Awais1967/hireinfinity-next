@@ -72,7 +72,7 @@ function ContactInfoRow({ icon, label, value }) {
       </div>
       <div>
         <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">{label}</span>
-        <span className="mt-1 block text-sm font-bold leading-5 text-slate-950">{value}</span>
+        <span className={`mt-1 block text-sm font-bold leading-5 text-slate-950 ${value === "hello@hireinfinity.co" ? "font-email" : ""}`}>{value}</span>
       </div>
     </div>
   );
@@ -109,7 +109,7 @@ export function Contact() {
           </p>
         </section>
 
-        <section className="mx-auto mt-14 grid max-w-5xl gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_16px_42px_rgba(15,23,42,0.04)] md:grid-cols-2 md:p-8">
+        <section className="mx-auto mt-14 grid max-w-6xl gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_16px_42px_rgba(15,23,42,0.04)] md:grid-cols-2 md:p-8">
           {contactInfoItems.map((item, index) => (
             <InfoItem key={item.title} item={item} index={index} />
           ))}

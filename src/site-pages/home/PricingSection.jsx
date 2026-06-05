@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarDays, Check, Clock3, Code2, ShieldCheck, Target, Users } from "lucide-react";
+import { ArrowRight, Award, CalendarDays, Check, Clock3, Code2, Crown, ShieldCheck, Sprout, Target, Users } from "lucide-react";
 import { fadeUp, staggerContainer } from "../../common/ui/animationVariants";
 
 const tabs = [
@@ -129,6 +129,13 @@ const pricingPlans = {
   ],
 };
 
+const levelIcons = {
+  Junior: { icon: Sprout, classes: "border-slate-200 bg-slate-50 text-slate-600" },
+  "Mid-Level": { icon: Code2, classes: "border-blue-100 bg-blue-50 text-[#0052FF]" },
+  Senior: { icon: Award, classes: "border-emerald-100 bg-emerald-50 text-emerald-600" },
+  Staff: { icon: Crown, classes: "border-purple-100 bg-purple-50 text-purple-600" },
+};
+
 function CalculatorBanner() {
   return (
     <motion.div
@@ -188,6 +195,9 @@ function PricingTabs({ activeTab, onTabChange }) {
 }
 
 function PricingCard({ plan }) {
+  const levelIcon = levelIcons[plan.name];
+  const LevelIcon = levelIcon?.icon;
+
   return (
     <motion.article
       variants={fadeUp}
@@ -196,7 +206,14 @@ function PricingCard({ plan }) {
       className="group flex h-full min-h-[500px] flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_14px_35px_rgba(15,23,42,0.055)] transition-all duration-300 hover:border-blue-200 hover:shadow-[0_22px_48px_rgba(15,23,42,0.09)] sm:p-8"
     >
       <div className="flex items-start justify-between gap-4">
-        <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-slate-950">{plan.name}</p>
+        <div className="flex items-center gap-3">
+          {LevelIcon && (
+            <span className={`flex h-10 w-10 items-center justify-center rounded-xl border ${levelIcon.classes}`}>
+              <LevelIcon className="h-5 w-5" />
+            </span>
+          )}
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-slate-950">{plan.name}</p>
+        </div>
         {plan.badge && (
           <span className="rounded-md border border-blue-100 bg-blue-50 px-3 py-1 font-mono text-[10px] font-semibold text-[#0052FF]">
             {plan.badge}
@@ -224,12 +241,14 @@ function PricingCard({ plan }) {
         ))}
       </div>
 
-      <Link
-        href="/contact"
-        className="mt-auto inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#0052FF] px-5 py-3 font-display text-sm font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.2)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
-      >
-        {plan.cta}
-      </Link>
+      <div className="mt-auto pt-6">
+        <Link
+          href="/contact"
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[#0052FF] px-5 py-3 font-display text-sm font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.2)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+        >
+          {plan.cta}
+        </Link>
+      </div>
     </motion.article>
   );
 }
@@ -243,7 +262,7 @@ export function PricingSection() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <motion.div variants={fadeUp} className="mx-auto max-w-4xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Simple, All-Inclusive Plans</p>
-          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
             Pricing that scales with your growth
           </h2>
         </motion.div>

@@ -70,7 +70,7 @@ export function Home() {
             <Sparkles className="h-3.5 w-3.5" />
             US Registered firm · SOC2 compliance ready
           </motion.span>
-          <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-5xl">
             <span className="block mb-3">Senior engineers.</span>
             <span className="block text-[#0052FF] mb-1">Ready in 5 days.</span>
             <span className="block mb-1">70% less than a US hire.</span>
@@ -87,10 +87,10 @@ export function Home() {
               <ArrowRight className="h-4 w-4" />
             </LinkButton>
             <LinkButton
-              to="/engineers"
+              to="/pricing"
               className="inline-flex min-h-14 items-center justify-center rounded-md border border-slate-200 bg-white px-8 py-4 font-display text-sm font-bold text-slate-950 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:text-[#0052FF]"
             >
-              View Vetted Profiles
+              Calculate Savings
             </LinkButton>
           </motion.div>
 

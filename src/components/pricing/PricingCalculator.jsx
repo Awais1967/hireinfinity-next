@@ -20,7 +20,7 @@ const presets = [
   { id: "enterprise", label: "Enterprise (6)", icon: Building2, counts: { "frontend-senior": 1, "backend-mid": 1, "backend-senior": 1, architect: 1, devops: 1, qa: 1 } },
 ];
 
-const termOptions = [1, 3, 6, 12];
+const termOptions = [1, 3, 6, 9, 12];
 
 function formatCurrency(value) {
   return new Intl.NumberFormat("en-US", {
@@ -39,11 +39,12 @@ export function PricingCalculator() {
   const [activePreset, setActivePreset] = useState("bootstrap");
   const [counts, setCounts] = useState(() => getPresetCounts("bootstrap"));
   const [term, setTerm] = useState(3);
+  const [includeOnshoreBurden, setIncludeOnshoreBurden] = useState(true);
 
   const activeCount = useMemo(() => roles.reduce((sum, role) => sum + counts[role.id], 0), [counts]);
   const monthlyTotal = useMemo(() => roles.reduce((sum, role) => sum + role.price * counts[role.id], 0), [counts]);
   const agencyMonthly = Math.round(monthlyTotal * 1.885);
-  const onshoreMonthly = Math.round(monthlyTotal * 4.807);
+  const onshoreMonthly = Math.round(monthlyTotal * 3.846 * (includeOnshoreBurden ? 1.25 : 1));
   const termCommitment = monthlyTotal * term;
   const savings = Math.max(onshoreMonthly * term - termCommitment, 0);
 
@@ -156,31 +157,50 @@ export function PricingCalculator() {
 
             <div className="mt-6 grid gap-4 border-t border-slate-200 pt-6 sm:grid-cols-2">
               <div className="rounded-xl border border-slate-200 bg-white/70 p-5">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">Engagement Runtime Term</p>
-                <div className="mt-4 grid grid-cols-4 gap-2">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">Engagement Runtime Term</p>
+                  <span className="rounded-full bg-slate-950 px-3 py-1 font-mono text-[10px] font-bold text-white">{term} Months</span>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max={termOptions.length - 1}
+                  step="1"
+                  value={termOptions.indexOf(term)}
+                  onChange={(event) => setTerm(termOptions[Number(event.target.value)])}
+                  className="mt-5 h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-[#0052FF]"
+                  aria-label="Engagement runtime term"
+                />
+                <div className="mt-2 flex justify-between font-mono text-[9px] font-bold text-slate-400">
                   {termOptions.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setTerm(option)}
-                      className={`rounded-lg px-3 py-2 font-mono text-[10px] font-bold transition-colors ${
-                        term === option ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-500 hover:bg-blue-50 hover:text-[#0052FF]"
-                      }`}
-                    >
-                      {option}m
-                    </button>
+                    <span key={option}>{option}m</span>
                   ))}
                 </div>
               </div>
-              <div className="rounded-xl border border-slate-200 bg-white/70 p-5">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">Live Setup</p>
-                <p className="mt-3 font-display text-lg font-bold text-slate-950">{activeCount} active specialists</p>
-                <p className="mt-1 text-sm text-slate-500">Direct contractor rates with PM support included.</p>
+              <div className="flex items-center justify-between gap-5 rounded-xl border border-slate-200 bg-white/70 p-5">
+                <div>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">On-Shore Tax Heavy Load</p>
+                  <p className="mt-2 font-display text-sm font-bold text-slate-950">Add US Burden (+25%)</p>
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={includeOnshoreBurden}
+                  onClick={() => setIncludeOnshoreBurden((current) => !current)}
+                  className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${includeOnshoreBurden ? "bg-[#0052FF]" : "bg-slate-300"}`}
+                >
+                  <span
+                    className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
+                      includeOnshoreBurden ? "translate-x-6" : "translate-x-1"
+                    }`}
+                  />
+                  <span className="sr-only">Toggle US onshore burden</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <div className="p-5 sm:p-8">
+          <div className="flex flex-col p-5 sm:p-8">
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400">Squad Ratio & Live Cost Matrix</p>
             <div className="mt-5 space-y-4">
               <MatrixCard tone="blue" label="HireInfinity Subscription" value={`${formatCurrency(monthlyTotal)}/mo`} detail={`Total Term Commitment (${term}m):`} amount={formatCurrency(termCommitment)} />
@@ -191,7 +211,7 @@ export function PricingCalculator() {
 
             <Link
               href="/contact"
-              className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+              className="mt-auto inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
             >
               Lock In Custom Setup
               <ArrowRight className="h-5 w-5" />

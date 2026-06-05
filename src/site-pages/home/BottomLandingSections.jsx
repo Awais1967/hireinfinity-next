@@ -5,17 +5,21 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Bot,
+  CheckCircle2,
   ChevronDown,
   Cloud,
   Code2,
   Container,
   Database,
+  Eye,
   Gauge,
   Infinity,
   Laptop,
   Layers3,
+  Leaf,
   Monitor,
   Palette,
+  Send,
   Server,
   Smartphone,
   TabletSmartphone,
@@ -27,11 +31,11 @@ import { landingFaqs, technologyChips } from "../../constants/mockData";
 import { fadeUp, staggerContainer } from "../../common/ui/animationVariants";
 
 const technologyFilters = [
-  { label: "All Specs", icon: Zap, active: true },
-  { label: "Web (FE & BE)", icon: Laptop },
-  { label: "Mobile Units", icon: Smartphone },
-  { label: "DevOps & SRE", icon: Cloud },
-  { label: "QA Automation", icon: Bot },
+  { id: "all", label: "All Specs", icon: Zap },
+  { id: "web", label: "Web (FE & BE)", icon: Laptop },
+  { id: "mobile", label: "Mobile Units", icon: Smartphone },
+  { id: "devops", label: "DevOps & SRE", icon: Cloud },
+  { id: "qa", label: "QA Automation", icon: Bot },
 ];
 
 const technologyIconStyles = {
@@ -52,11 +56,24 @@ const technologyIconStyles = {
   GCP: ["text-sky-500", Cloud],
   PostgreSQL: ["text-blue-500", Database],
   Terraform: ["text-violet-500", Layers3],
+  Postman: ["text-orange-500", Send],
+  Cypress: ["text-emerald-500", CheckCircle2],
+  Playwright: ["text-pink-500", Eye],
+  Selenium: ["text-green-600", Leaf],
 };
 
-const displayedTechnologyChips = [...technologyChips, "GCP", "PostgreSQL", "Terraform"];
+const technologyGroups = {
+  all: [...technologyChips, "GCP", "PostgreSQL", "Terraform"],
+  web: ["React", "Next.js", "Node.js", "Python", "Laravel", "FastAPI", "TypeScript", "Figma", "PostgreSQL"],
+  mobile: ["Flutter", "React Native", "TypeScript", "Figma"],
+  devops: ["AWS", "DevOps", "Kubernetes", "GCP", "Terraform"],
+  qa: ["QA Automation", "Postman", "Cypress", "Playwright", "Selenium"],
+};
 
 function TechnologyChips() {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const displayedTechnologyChips = technologyGroups[activeFilter];
+
   return (
     <motion.section className="bg-[#f5f6f8]" initial="hidden" animate="visible" variants={staggerContainer}>
       <div className="mx-auto max-w-6xl px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
@@ -71,23 +88,29 @@ function TechnologyChips() {
           <motion.div variants={staggerContainer} className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-2">
             {technologyFilters.map((filter) => {
               const Icon = filter.icon;
+              const isActive = activeFilter === filter.id;
 
               return (
-                <motion.span
+                <motion.button
                   key={filter.label}
+                  type="button"
                   variants={fadeUp}
+                  aria-pressed={isActive}
+                  onClick={() => setActiveFilter(filter.id)}
                   className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-[11px] font-bold shadow-sm ${
-                    filter.active ? "border-[#0052FF] bg-[#0052FF] text-white shadow-[0_10px_20px_rgba(0,82,255,0.18)]" : "border-slate-200 bg-white/80 text-slate-700"
+                    isActive
+                      ? "border-[#0052FF] bg-[#0052FF] text-white shadow-[0_10px_20px_rgba(0,82,255,0.18)]"
+                      : "border-slate-200 bg-white/80 text-slate-700 transition-colors hover:border-blue-200 hover:bg-white hover:text-[#0052FF]"
                   }`}
                 >
                   <Icon className="h-3.5 w-3.5" />
                   {filter.label}
-                </motion.span>
+                </motion.button>
               );
             })}
           </motion.div>
 
-          <motion.div variants={staggerContainer} className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
+          <motion.div key={activeFilter} variants={staggerContainer} initial="hidden" animate="visible" className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
             {displayedTechnologyChips.map((chip) => {
               const [iconColor, Icon = Monitor] = technologyIconStyles[chip] || ["text-[#0052FF]", Monitor];
 
