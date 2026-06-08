@@ -2,22 +2,73 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowRight, Building2, Crown, Gauge, Minus, Palette, Plus, Search, Server, Settings, Sparkles, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  BriefcaseBusiness,
+  Building2,
+  ClipboardList,
+  CloudCog,
+  Cpu,
+  Gauge,
+  Minus,
+  Monitor,
+  Plus,
+  Server,
+  ShieldCheck,
+  Smartphone,
+  Zap,
+} from "lucide-react";
+import { engineers } from "../../constants/mockData";
 
-const roles = [
-  { id: "frontend-mid", icon: Palette, name: "Frontend Mid-Level", level: "Mid-Level", price: 2650 },
-  { id: "frontend-senior", icon: Sparkles, name: "Frontend Senior", level: "Senior", price: 3800 },
-  { id: "backend-mid", icon: Settings, name: "Full-Stack/Backend Mid-Level", level: "Mid-Level", price: 3000 },
-  { id: "backend-senior", icon: Zap, name: "Full-Stack/Backend Senior", level: "Senior", price: 4500 },
-  { id: "architect", icon: Crown, name: "Staff/CTO-Level Architect", level: "Staff/Lead", price: 6000 },
-  { id: "devops", icon: Server, name: "DevOps & SRE Senior", level: "Senior", price: 4600 },
-  { id: "qa", icon: Search, name: "QA Automation Mid-Level", level: "Mid-Level", price: 2200 },
-];
+const roleIcons = {
+  frontend: Monitor,
+  backend: Server,
+  mobile: Smartphone,
+  devops: CloudCog,
+  qa: ShieldCheck,
+  pm: ClipboardList,
+  cto: BriefcaseBusiness,
+};
+
+function toRoleId(role) {
+  return role.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+const roles = engineers.map((engineer) => ({
+  id: toRoleId(engineer.role),
+  icon: roleIcons[engineer.category] || Cpu,
+  name: engineer.role,
+  level: engineer.experience,
+  price: engineer.monthlyValue,
+}));
 
 const presets = [
-  { id: "bootstrap", label: "Bootstrap (2)", icon: Zap, counts: { "frontend-mid": 1, "backend-senior": 1 } },
-  { id: "scale", label: "Scale (5)", icon: Gauge, counts: { "frontend-mid": 1, "frontend-senior": 1, "backend-senior": 1, devops: 1, qa: 1 } },
-  { id: "enterprise", label: "Enterprise (6)", icon: Building2, counts: { "frontend-senior": 1, "backend-mid": 1, "backend-senior": 1, architect: 1, devops: 1, qa: 1 } },
+  { id: "bootstrap", label: "Bootstrap (2)", icon: Zap, counts: { [toRoleId("Mid Frontend & Next.js Engineer")]: 1, [toRoleId("Senior Python & AI Engineer")]: 1 } },
+  {
+    id: "scale",
+    label: "Scale (5)",
+    icon: Gauge,
+    counts: {
+      [toRoleId("Mid Frontend & Next.js Engineer")]: 1,
+      [toRoleId("Senior UI/UX Designer & Figma Specialist")]: 1,
+      [toRoleId("Senior Python & AI Engineer")]: 1,
+      [toRoleId("Senior Platform Engineer (GCP & SRE)")]: 1,
+      [toRoleId("Mid QA Engineer")]: 1,
+    },
+  },
+  {
+    id: "enterprise",
+    label: "Enterprise (6)",
+    icon: Building2,
+    counts: {
+      [toRoleId("Lead Frontend & Next.js Engineer")]: 1,
+      [toRoleId("Staff Backend & Distributed Systems Architect")]: 1,
+      [toRoleId("Senior React Native Developer")]: 1,
+      [toRoleId("Lead Cloud Infrastructure & SRE")]: 1,
+      [toRoleId("Lead Software Development Engineer in Test (SDET)")]: 1,
+      [toRoleId("Fractional CTO")]: 1,
+    },
+  },
 ];
 
 const termOptions = [1, 3, 6, 9, 12];
@@ -41,8 +92,8 @@ export function PricingCalculator() {
   const [term, setTerm] = useState(3);
   const [includeOnshoreBurden, setIncludeOnshoreBurden] = useState(true);
 
-  const activeCount = useMemo(() => roles.reduce((sum, role) => sum + counts[role.id], 0), [counts]);
-  const monthlyTotal = useMemo(() => roles.reduce((sum, role) => sum + role.price * counts[role.id], 0), [counts]);
+  const activeCount = useMemo(() => roles.reduce((sum, role) => sum + (counts[role.id] || 0), 0), [counts]);
+  const monthlyTotal = useMemo(() => roles.reduce((sum, role) => sum + role.price * (counts[role.id] || 0), 0), [counts]);
   const agencyMonthly = Math.round(monthlyTotal * 1.885);
   const onshoreMonthly = Math.round(monthlyTotal * 3.846 * (includeOnshoreBurden ? 1.25 : 1));
   const termCommitment = monthlyTotal * term;
@@ -57,7 +108,7 @@ export function PricingCalculator() {
     setActivePreset("custom");
     setCounts((current) => ({
       ...current,
-      [roleId]: Math.max(0, current[roleId] + direction),
+      [roleId]: Math.max(0, (current[roleId] || 0) + direction),
     }));
   }
 
@@ -113,10 +164,10 @@ export function PricingCalculator() {
               <p className="hidden font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400 sm:block">Headcount Control</p>
             </div>
 
-            <div className="divide-y divide-slate-200">
+            <div className="max-h-[560px] divide-y divide-slate-200 overflow-y-auto pr-2">
               {roles.map((role) => {
                 const Icon = role.icon;
-                const count = counts[role.id];
+                const count = counts[role.id] || 0;
                 return (
                   <div key={role.id} className="grid gap-4 py-4 sm:grid-cols-[1fr_170px] sm:items-center">
                     <div className="flex items-center gap-4">
@@ -126,7 +177,7 @@ export function PricingCalculator() {
                       <div>
                         <h3 className="font-display text-base font-bold text-slate-950">{role.name}</h3>
                         <p className="mt-1 font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                          Level: {role.level} <span className="px-1 text-slate-300">&bull;</span> Starts <span className="text-[#0052FF]">{formatCurrency(role.price)}/mo</span>
+                          Exp: {role.level} <span className="px-1 text-slate-300">&bull;</span> Starts <span className="text-[#0052FF]">{formatCurrency(role.price)}/mo</span>
                         </p>
                       </div>
                     </div>
@@ -190,8 +241,8 @@ export function PricingCalculator() {
                   className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${includeOnshoreBurden ? "bg-[#0052FF]" : "bg-slate-300"}`}
                 >
                   <span
-                    className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
-                      includeOnshoreBurden ? "translate-x-6" : "translate-x-1"
+                    className={`absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform ${
+                      includeOnshoreBurden ? "translate-x-5" : "translate-x-0"
                     }`}
                   />
                   <span className="sr-only">Toggle US onshore burden</span>

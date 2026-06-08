@@ -126,7 +126,7 @@ function ProcessStepCard({ step }) {
 
 function StreamlinedFlowSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f5f6f8]">
+    <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden bg-[#f5f6f8]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,82,255,0.08)_1px,transparent_0)] [background-size:26px_26px]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 

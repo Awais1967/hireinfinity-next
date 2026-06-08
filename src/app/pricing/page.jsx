@@ -9,8 +9,8 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { BillingStreamSection } from "./BillingStreamSection";
 import { PricingCalculator } from "../../components/pricing/PricingCalculator";
-import { pricingTableRows } from "../../constants/mockData";
 
 export const metadata = {
   title: "Pricing | HireInfinity",
@@ -29,16 +29,6 @@ const trustCards = [
   ["Risk Protection", "2-Week Trial @ 50% Off", Zap],
   ["Squad Adaptability", "Month-to-Month Rollout", Handshake],
   ["Zero Hidden Marks", "Direct Contractor Rates", CheckCircle2],
-];
-
-const billingTabs = ["Monthly Contracts", "Hourly Scale", "Dedicated Pods", "Fixed-Price Dev"];
-
-const pricingColumns = [
-  ["specialty", "Specialty Sector", "text-slate-500"],
-  ["junior", "Junior (1-3 yrs)", "text-slate-500"],
-  ["mid", "Mid-Level (3-5 yrs)", "text-[#0052FF]"],
-  ["senior", "Senior (5-8 yrs)", "text-emerald-600"],
-  ["staff", "Staff / Lead (8+ yrs)", "text-purple-600"],
 ];
 
 const protectionFeatures = [
@@ -129,62 +119,6 @@ function HeroSection() {
             </div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function BillingStreamSection() {
-  return (
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="text-center">
-        <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Rate Model Density</p>
-        <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Select Your Billing Stream</h2>
-        <p className="mt-4 text-base leading-7 text-slate-600">Convert complex technical layouts into scalable budgets with three custom pricing formats.</p>
-
-        <div className="mx-auto mt-9 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-xl border border-slate-200 bg-slate-100 p-1 shadow-sm">
-          {billingTabs.map((tab, index) => (
-            <span key={tab} className={`rounded-lg px-4 py-3 font-mono text-xs font-bold ${index === 0 ? "bg-[#0052FF] text-white shadow-sm" : "text-slate-700"}`}>
-              {tab}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-slate-950 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
-        <div className="px-6 py-8 sm:px-8">
-          <h3 className="font-display text-2xl font-bold tracking-tight text-slate-950">Staff Augmentation Monthly Flat Rates</h3>
-          <p className="mt-2 font-mono text-xs font-medium text-slate-600">Full-time dedicated engineers (160h/month). Billed transparently semi-monthly.</p>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[920px] border-collapse text-left">
-            <thead>
-              <tr className="border-y border-slate-200 bg-[#f1f4f7]">
-                {pricingColumns.map(([key, label, color]) => (
-                  <th key={key} className={`px-6 py-5 font-mono text-[11px] font-bold uppercase tracking-wider ${color} sm:px-8`}>
-                    {label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {pricingTableRows.map((row) => (
-                <tr key={row.specialty} className="border-b border-slate-200 last:border-b-0">
-                  <td className="px-6 py-7 font-display text-base font-bold text-slate-950 sm:px-8">{row.specialty}</td>
-                  <td className="px-6 py-7 font-mono text-lg font-medium text-slate-500 sm:px-8">{row.junior}</td>
-                  <td className="px-6 py-7 font-mono text-lg font-bold text-slate-700 sm:px-8">{row.mid}</td>
-                  <td className="px-6 py-7 font-mono text-lg font-bold text-emerald-600 sm:px-8">{row.senior}</td>
-                  <td className="px-6 py-7 font-mono text-lg font-bold text-purple-600 sm:px-8">{row.staff}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <Link href="/contact" className="block bg-[#f1f4f7] px-6 py-6 text-center font-display text-sm font-bold text-[#0052FF] transition-colors hover:bg-blue-50">
-          Unlock 2-Week Trial across monthly ranges <ArrowRight className="ml-1 inline h-4 w-4" />
-        </Link>
       </div>
     </section>
   );
