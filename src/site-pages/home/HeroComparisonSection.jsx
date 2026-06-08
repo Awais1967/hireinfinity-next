@@ -80,9 +80,9 @@ const processToneStyles = {
 function StatStrip() {
   return (
     <div className="bg-[#03071a] shadow-[0_8px_18px_rgba(15,23,42,0.16)]">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-white/10 px-4 py-4 sm:px-6 md:grid-cols-4 md:divide-y-0 md:py-5 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-white/10 px-4 py-2 sm:px-6 md:grid-cols-4 md:divide-y-0  lg:px-8">
         {heroComparisonStats.map(([value, label, color]) => (
-          <div key={label} className="px-3 py-2 text-center md:py-0">
+          <div key={label} className="px-3 py-1 text-center md:py-0">
             <div className={`font-display text-4xl font-bold leading-none tracking-tight sm:text-5xl ${color}`}>{value}</div>
             <div className="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-500 sm:text-[11px]">{label}</div>
           </div>
@@ -222,7 +222,7 @@ export function HeroComparisonSection() {
     <motion.section initial="hidden" animate="visible" variants={staggerContainer} className="bg-[#f5f6f8]">
       <StatStrip />
 
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 mb-0">
+      <div className="mx-auto mb-0 max-w-7xl px-4 pb-16 pt-0 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24 mt-20">
         <motion.div variants={fadeUp} className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">HIRING REIMAGINED</p>
           <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">

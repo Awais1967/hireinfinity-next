@@ -470,14 +470,14 @@ export const sourcingComparisonRows = [
     arc: "No structured trial",
     local: "None (Billed day 1)",
   },
-  {
-    parameter: "Arbitrary Buyout / Transition",
-    hireInfinity: "Flat $4,500 (Less than competition)",
-    toptal: "Extensive ($25,000+)",
-    lemon: "18% of annualized salary",
-    arc: "Varies ($12k+)",
-    local: "N/A",
-  },
+  // {
+  //   parameter: "Arbitrary Buyout / Transition",
+  //   hireInfinity: "Flat $4,500 (Less than competition)",
+  //   toptal: "Extensive ($25,000+)",
+  //   lemon: "18% of annualized salary",
+  //   arc: "Varies ($12k+)",
+  //   local: "N/A",
+  // },
   {
     parameter: "Administrative & Platform Fees",
     hireInfinity: "0% (Transparent Rates)",
@@ -550,6 +550,36 @@ export const caseStudies = [
     quote: "HireInfinity matched us with a senior mobile specialist in exactly 3 days.",
     summary:
       "A freight platform needed a reliable mobile layer and cloud deployment support without delaying dispatch operations.",
+  },
+  {
+    industry: "B2B SaaS & Workflow Automation",
+    client: "Austin-based operations SaaS replacing manual customer onboarding.",
+    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Figma"],
+    duration: "5 Months",
+    metric: "Onboarding cycle cut 62% | 14 workflows automated",
+    quote: "Their full-stack engineer turned our scattered onboarding flow into a clean product engine.",
+    summary:
+      "A workflow SaaS needed customer portals, billing automation, and admin dashboards shipped without slowing active client support.",
+  },
+  {
+    industry: "EdTech & Learning Analytics",
+    client: "Remote-first learning platform scaling enterprise school accounts.",
+    stack: ["React", "Python", "FastAPI", "AWS", "PostgreSQL", "Playwright"],
+    duration: "7 Months",
+    metric: "Reporting latency down 68% | QA coverage up 4x",
+    quote: "We finally had reliable analytics releases without pausing our product roadmap.",
+    summary:
+      "An education platform needed faster analytics dashboards, stable assessment reporting, and regression coverage for school district rollouts.",
+  },
+  {
+    industry: "Real Estate & Property Tech",
+    client: "Regional property marketplace consolidating agent and buyer tools.",
+    stack: ["React Native", "Node.js", "AWS", "Redis", "Mapbox", "Figma"],
+    duration: "6 Months",
+    metric: "Mobile lead response 3.1x faster | 40% lower cloud spend",
+    quote: "HireInfinity helped us launch mobile-first property matching while trimming infrastructure waste.",
+    summary:
+      "A property technology team needed mobile lead routing, map-based search improvements, and backend performance tuning before peak season.",
   },
 ];
 
@@ -808,4 +838,3 @@ export const caseStudyScaleOptions = {
   3: ["Growth Team Pod (2.5 FTE)", "MARKET ACCELERATOR", "55 - 75", "10 - 15 / week", "40 hours / mo", "$4,725"],
   4: ["Scale Team Pod (4.0 FTE)", "ENTERPRISE ENGINE", "85 - 110", "15 - 25 / week", "75 hours / mo", "$6,750"],
 };
-

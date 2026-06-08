@@ -38,7 +38,7 @@ const podRows = [
 ];
 
 const fixedRows = [
-  ["Starting Price", "$4,500", "$8,800", "$14,500"],
+  // ["Starting Price", "$4,500", "$8,800", "$14,500"],
   ["Delivery Timeline", "2-4 Weeks", "4-6 Weeks", "6-8 Weeks"],
   ["Frontend UI & Components", "Full layout & static responsive components", "Bespoke customized layouts & UI theme configs", "Adaptive enterprise portal layouts & animations"],
   ["Backend & DB Groundwork", "Baseline database schemas & mock endpoints", "Full SQL database sync & server routing", "Redundant clustering & robust admin schemas"],

@@ -18,11 +18,11 @@ export const metadata = {
 };
 
 const platformBadges = [
-  ["Salesforce", "https://cdn.simpleicons.org/salesforce/00A1E0", "border-sky-200 bg-sky-50 text-sky-700"],
-  ["AWS Cloud", "https://cdn.simpleicons.org/amazonwebservices/FF9900", "border-amber-200 bg-amber-50 text-amber-700"],
-  ["MS Azure", "https://cdn.simpleicons.org/microsoftazure/0078D4", "border-blue-200 bg-blue-50 text-blue-700"],
-  ["Google Cloud", "https://cdn.simpleicons.org/googlecloud/4285F4", "border-red-200 bg-red-50 text-red-700"],
-  ["ServiceNow", "https://cdn.simpleicons.org/servicenow/81B5A1", "border-slate-200 bg-slate-100 text-slate-700"],
+  ["Salesforce", "/platform-logos/salesforce.svg", "border-sky-200 bg-sky-50 text-sky-700"],
+  ["AWS Cloud", "/platform-logos/aws.svg", "border-amber-200 bg-amber-50 text-amber-700"],
+  ["MS Azure", "/platform-logos/azure.svg", "border-blue-200 bg-blue-50 text-blue-700"],
+  ["Google Cloud", "/platform-logos/google-cloud.svg", "border-red-200 bg-red-50 text-red-700"],
+  ["ServiceNow", "/platform-logos/servicenow.svg", "border-slate-200 bg-slate-50 text-slate-700"],
 ];
 
 const trustCards = [
@@ -102,8 +102,10 @@ function HeroSection() {
       </p>
       <div className="mt-5 flex flex-wrap justify-center gap-3">
         {platformBadges.map(([label, logo, classes]) => (
-          <span key={label} className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-display text-sm font-bold ${classes}`}>
-            <img src={logo} alt="" aria-hidden="true" className="h-4 w-4 object-contain" />
+          <span key={label} className={`inline-flex min-h-11 items-center gap-2.5 rounded-xl border bg-white/80 px-4 py-2.5 font-display text-sm font-bold shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md ${classes}`}>
+            <span className="flex h-7 w-7 items-center justify-center">
+              <img src={logo} alt={`${label} logo`} className="h-4.5 w-4.5 object-contain" />
+            </span>
             {label}
           </span>
         ))}
@@ -126,8 +128,9 @@ function HeroSection() {
 
 function ProtectionSection() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid gap-10 rounded-3xl bg-[#101827] p-8 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] lg:grid-cols-[0.9fr_1.5fr] lg:p-12">
+    <section >
+    {/* className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"> */}
+      {/* <div className="grid gap-10 rounded-3xl bg-[#101827] p-8 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] lg:grid-cols-[0.9fr_1.5fr] lg:p-12">
         <div className="flex flex-col justify-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#5b8cff]">W-2 vs C-to-C Compliance</p>
           <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight">Full USA Registered Protection</h2>
@@ -155,7 +158,7 @@ function ProtectionSection() {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

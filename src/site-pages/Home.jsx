@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
 import { fadeUp, staggerContainer, cardHover } from "../common/ui/animationVariants";
 import { heroMatches, heroTrustPoints } from "../constants/mockData";
@@ -14,6 +14,14 @@ import { ProcessRoadmapSection } from "./home/ProcessRoadmapSection";
 import { RepresentativeProfilesSection } from "./home/RepresentativeProfilesSection";
 import { ValueCardsSection } from "./home/ValueCardsSection";
 import { VettingProcessSection } from "./home/VettingProcessSection";
+
+const heroPlatformLogos = [
+  ["Salesforce", "/platform-logos/salesforce.svg"],
+  ["AWS Cloud", "/platform-logos/aws.svg"],
+  ["MS Azure", "/platform-logos/azure.svg"],
+  ["Google Cloud", "/platform-logos/google-cloud.svg"],
+  ["ServiceNow", "/platform-logos/servicenow.svg"],
+];
 
 function HeroPanel() {
   return (
@@ -66,10 +74,12 @@ export function Home() {
         className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-24"
       >
         <div className="flex flex-col justify-center lg:col-span-7">
-          <motion.span variants={fadeUp} className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-wider text-[#0052FF]">
-            <Sparkles className="h-3.5 w-3.5" />
-            US Registered firm · SOC2 compliance ready
-          </motion.span>
+          <motion.div variants={fadeUp} className="inline-flex w-fit items-center gap-3 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 shadow-sm">
+            <span className="sr-only">Certified platform experience</span>
+            {heroPlatformLogos.map(([label, logo]) => (
+              <img key={label} src={logo} alt={`${label} logo`} className="h-4.5 w-4.5 object-contain" />
+            ))}
+          </motion.div>
           <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-5xl">
             <span className="block mb-3">Senior engineers.</span>
             <span className="block text-[#0052FF] mb-1">Ready in 5 days.</span>
