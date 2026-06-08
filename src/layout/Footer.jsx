@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Award, Star } from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
 import { scrollToSection } from "../common/utils/navigation";
-
+import applogo from "../../public/assets/images/applogo.pnd"
 function LinkedinIcon() {
   return (
     <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
@@ -34,7 +34,7 @@ export function Footer() {
               <span className="font-display text-2xl font-bold tracking-tight text-slate-950">
                 Hire<span className="text-[#0052FF]">Infinity</span>
               </span>
-              <span className="-mt-1 font-mono text-[10px] font-bold uppercase tracking-widest text-slate-400">A brand of Infinity Softwares</span>
+              <span className="-mt-1 font-mono text-[10px] font-extrabold uppercase tracking-widest text-slate-600">A brand of Infinity Softwares</span>
             </LinkButton>
             <p className="max-w-sm text-sm leading-relaxed text-slate-600">
               Hire senior, vetted engineers compatible with your hours in 5 days or less. Reduce development overhead by 60% with zero hiring barriers.
@@ -84,9 +84,12 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-slate-500 md:flex-row">
           <div className="flex flex-wrap items-center justify-center gap-3 leading-none md:justify-start">
-            <span className="inline-flex items-center">&copy; 2026 HireInfinity. All rights reserved.</span>
+            <span className="inline-flex items-center gap-2">
+              <img src={applogo} alt="HireInfinity logo" className="h-5 w-5 rounded object-contain" />
+              &copy; 2026 HireInfinity. All rights reserved.
+            </span>
             <span className="inline-flex items-center text-slate-300">&bull;</span>
-            <span className="inline-flex items-center font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <span className="inline-flex items-center font-mono text-[10px] font-extrabold uppercase tracking-wider text-slate-600">
               A brand of Infinity Softwares
             </span>
           </div>

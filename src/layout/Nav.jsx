@@ -26,7 +26,7 @@ export function Nav() {
             <span className="font-display text-2xl font-bold tracking-tight text-slate-950 transition-colors group-hover:text-blue-600">
               Hire<span className="text-[#0052FF]">Infinity</span>
             </span>
-            <span className="-mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-slate-400">
+            <span className="-mt-0.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-slate-600">
               A brand of Infinity Softwares
             </span>
           </LinkButton>
