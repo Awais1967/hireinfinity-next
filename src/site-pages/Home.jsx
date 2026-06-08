@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
@@ -48,8 +49,23 @@ function HeroPanel() {
               </span>
               <span className="whitespace-nowrap font-mono text-[11px] font-medium text-slate-400">{match.exp}</span>
             </div>
-            <h3 className="font-display text-base font-bold leading-snug text-slate-950 sm:text-lg">{match.title}</h3>
-            <p className="mt-1 font-mono text-xs font-medium text-slate-500">{match.price}</p>
+
+            <div className="flex items-start gap-3.5">
+              <div className="mt-0.5 shrink-0">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#0052FF] bg-white font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
+                  {match.avatar.initials}
+                </div>
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">Vetted and available</span>
+                </div>
+                <h3 className="font-display text-base font-bold leading-snug text-slate-950 sm:text-lg">{match.title}</h3>
+                <p className="mt-1 font-mono text-xs font-medium text-slate-500">{match.price}</p>
+              </div>
+            </div>
+
             <div className="mt-4 flex flex-wrap gap-2">
               {match.skills.map((skill) => (
                 <span key={skill} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-[10px] font-medium text-slate-700">
@@ -77,7 +93,7 @@ export function Home() {
           <motion.div variants={fadeUp} className="inline-flex w-fit items-center gap-3 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 shadow-sm">
             <span className="sr-only">Certified platform experience</span>
             {heroPlatformLogos.map(([label, logo]) => (
-              <img key={label} src={logo} alt={`${label} logo`} className="h-4.5 w-4.5 object-contain" />
+              <Image key={label} src={logo} alt={`${label} logo`} width={18} height={18} className="h-4.5 w-4.5 object-contain" />
             ))}
           </motion.div>
           <motion.h1 variants={fadeUp} className="mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-slate-950 sm:text-5xl lg:text-5xl">

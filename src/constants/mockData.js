@@ -295,6 +295,10 @@ export const heroMatches = [
     title: "Lead Frontend & Next.js Engineer",
     price: "$5,500/mo / Month base",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    avatar: {
+      initials: "LF",
+      accent: "from-blue-500 via-indigo-500 to-sky-400",
+    },
   },
   {
     type: "Profile Type 2",
@@ -302,6 +306,10 @@ export const heroMatches = [
     title: "Staff Backend & Distributed Systems Architect",
     price: "$6,000/mo / Month base",
     skills: ["Node.js", "TypeScript", "PostgreSQL", "Redis"],
+    avatar: {
+      initials: "SB",
+      accent: "from-violet-500 via-blue-500 to-cyan-400",
+    },
   },
   {
     type: "Profile Type 3",
@@ -309,6 +317,10 @@ export const heroMatches = [
     title: "Senior React Native Developer",
     price: "$4,400/mo / Month base",
     skills: ["React Native", "TypeScript", "iOS/Android SDK", "Expo"],
+    avatar: {
+      initials: "SR",
+      accent: "from-emerald-500 via-teal-500 to-cyan-400",
+    },
   },
 ];
 

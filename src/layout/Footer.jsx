@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Award, Star } from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
 import { scrollToSection } from "../common/utils/navigation";
-import applogo from "../../public/assets/images/applogo.pnd"
 function LinkedinIcon() {
   return (
     <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
@@ -82,18 +82,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 pt-8 text-xs text-slate-500 md:flex-row">
-          <div className="flex flex-wrap items-center justify-center gap-3 leading-none md:justify-start">
-            <span className="inline-flex items-center gap-2">
-              <img src={applogo} alt="HireInfinity logo" className="h-5 w-5 rounded object-contain" />
-              &copy; 2026 HireInfinity. All rights reserved.
-            </span>
-            <span className="inline-flex items-center text-slate-300">&bull;</span>
+        <div className="pt-8 text-xs text-slate-500">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="flex items-center gap-2">
+              <Image src="/assets/images/applogo.svg" alt="HireInfinity logo" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" />
+              <span>&copy; 2026 HireInfinity. All rights reserved.</span>
+            </div>
             <span className="inline-flex items-center font-mono text-[10px] font-extrabold uppercase tracking-wider text-slate-600">
               A brand of Infinity Softwares
             </span>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:justify-end">
             <LinkButton to="/contact" className="hover:text-blue-600">Book a Free Call</LinkButton>
             <span className="text-slate-300">|</span>
             <span className="cursor-pointer text-slate-400 hover:text-blue-600">Privacy Policy</span>
@@ -105,5 +104,3 @@ export function Footer() {
     </footer>
   );
 }
-
-
