@@ -113,8 +113,8 @@ export function PricingCalculator() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-[#f1f4f7] shadow-[0_10px_28px_rgba(15,23,42,0.08)]">
+    <section className="mx-auto max-w-6xl px-3 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-[#f1f4f7] shadow-[0_10px_28px_rgba(15,23,42,0.08)] sm:rounded-3xl">
         <div className="flex flex-col gap-5 border-b border-slate-200 px-5 py-7 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <div className="flex flex-wrap gap-2">
@@ -156,32 +156,36 @@ export function PricingCalculator() {
         </div>
 
         <div className="grid lg:grid-cols-[1.35fr_1fr]">
-          <div className="border-b border-slate-200 p-5 sm:p-8 lg:border-b-0 lg:border-r">
-            <div className="mb-4 grid grid-cols-[1fr_170px] gap-3 border-b border-slate-200 pb-4">
+          <div className="border-b border-slate-200 p-4 sm:p-8 lg:border-b-0 lg:border-r">
+            <div className="mb-4 grid gap-3 border-b border-slate-200 pb-4 sm:grid-cols-[minmax(0,1fr)_170px]">
               <p className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400">
                 Augmentation Profile Role <span className="rounded-full bg-blue-100 px-2 py-1 text-[9px] text-[#0052FF]">{activeCount} configured</span>
               </p>
               <p className="hidden font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-slate-400 sm:block">Headcount Control</p>
             </div>
 
-            <div className="max-h-[560px] divide-y divide-slate-200 overflow-y-auto pr-2">
+            <div className="max-h-[560px] divide-y divide-slate-200 overflow-y-auto pr-1 sm:pr-2">
               {roles.map((role) => {
                 const Icon = role.icon;
                 const count = counts[role.id] || 0;
                 return (
-                  <div key={role.id} className="grid gap-4 py-4 sm:grid-cols-[1fr_170px] sm:items-center">
-                    <div className="flex items-center gap-4">
+                  <div key={role.id} className="grid gap-3 py-4 sm:grid-cols-[minmax(0,1fr)_170px] sm:items-center">
+                    <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-4">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950">
                         <Icon className="h-5 w-5" />
                       </span>
-                      <div>
-                        <h3 className="font-display text-base font-bold text-slate-950">{role.name}</h3>
-                        <p className="mt-1 font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                          Exp: {role.level} <span className="px-1 text-slate-300">&bull;</span> Starts <span className="text-[#0052FF]">{formatCurrency(role.price)}/mo</span>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-display text-[15px] font-bold leading-snug text-slate-950 sm:text-base">{role.name}</h3>
+                        <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500 sm:text-[10px]">
+                          <span>Exp: {role.level}</span>
+                          <span className="text-slate-300">&bull;</span>
+                          <span>
+                            Starts <span className="text-[#0052FF]">{formatCurrency(role.price)}/mo</span>
+                          </span>
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center justify-end gap-4">
+                    <div className="ml-[52px] flex items-center justify-end gap-3 sm:ml-0 sm:gap-4">
                       <button
                         type="button"
                         onClick={() => updateCount(role.id, -1)}

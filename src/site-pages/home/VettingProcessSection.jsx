@@ -76,7 +76,7 @@ export function VettingProcessSection() {
 
         <div className="flex flex-col justify-center">
           <div className="rounded-2xl border border-slate-200 bg-white/70 p-7 shadow-[0_10px_28px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
-            <h3 className="font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Only the top 1.2%</h3>
+            <h3 className="font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Only the top 5%</h3>
             <p className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">
               Of applicants become fully vetted HireInfinity talent.
             </p>

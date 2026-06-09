@@ -93,9 +93,9 @@ function HeroSection() {
         Clear, Flat pricing.
         <span className="block text-[#0052FF]">No onboarding fees.</span>
       </h1>
-      <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-700 sm:text-xl">
+      {/* <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-700 sm:text-xl">
         Scale your developer headcount with complete transparency. Standard month-to-month terms, zero sign-up retainers, and an absolute 2-week risk-free trial.
-      </p>
+      </p> */}
 
       <p className="mt-12 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">
         Engineers fully experienced & certified across leading cloud environments & SaaS platforms
@@ -111,13 +111,13 @@ function HeroSection() {
         ))}
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-4xl gap-4 md:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-4xl grid-cols-3 gap-2 sm:gap-4">
         {trustCards.map(([label, title, Icon]) => (
-          <div key={title} className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white/80 p-5 text-left shadow-sm">
-            <Icon className="h-7 w-7 text-[#0052FF]" />
-            <div>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</p>
-              <p className="mt-1 font-display text-base font-bold text-slate-950">{title}</p>
+          <div key={title} className="flex min-w-0 flex-col gap-2 rounded-xl border border-slate-200 bg-white/80 p-3 text-left shadow-sm sm:flex-row sm:items-center sm:gap-4 sm:p-5">
+            <Icon className="h-5 w-5 shrink-0 text-[#0052FF] sm:h-7 sm:w-7" />
+            <div className="min-w-0">
+              <p className="break-words font-mono text-[7px] font-bold uppercase tracking-wider text-slate-400 sm:text-[10px]">{label}</p>
+              <p className="mt-1 break-words font-display text-[11px] font-bold leading-snug text-slate-950 sm:text-base">{title}</p>
             </div>
           </div>
         ))}

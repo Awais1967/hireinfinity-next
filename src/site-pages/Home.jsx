@@ -149,7 +149,7 @@ export function Home() {
       <ProcessRoadmapSection />
       <RepresentativeProfilesSection />
       <VettingProcessSection />
-      <ValueCardsSection />
+      {/* <ValueCardsSection /> */}
       <PricingSection />
       <HiringComparisonSection />
       <BottomLandingSections />

@@ -21,8 +21,8 @@ export function Nav() {
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <LinkButton to="/" className="group flex flex-col text-center sm:text-left">
+        <div className="relative flex h-20 items-center justify-between">
+          <LinkButton to="/" className="group absolute left-1/2 flex -translate-x-1/2 flex-col text-center md:static md:translate-x-0 md:text-left">
             <span className="font-display text-2xl font-bold tracking-tight text-slate-950 transition-colors group-hover:text-blue-600">
               Hire<span className="text-[#0052FF]">Infinity</span>
             </span>
@@ -56,7 +56,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="rounded-md p-2 text-slate-600 hover:text-slate-900 md:hidden"
+            className="ml-auto rounded-md p-2 text-slate-600 hover:text-slate-900 md:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label="Toggle navigation"
           >
