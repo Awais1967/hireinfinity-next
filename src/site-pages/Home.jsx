@@ -52,8 +52,19 @@ function HeroPanel() {
 
             <div className="flex items-start gap-3.5">
               <div className="mt-0.5 shrink-0">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#0052FF] bg-white font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
-                  {match.avatar.initials}
+                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-[#0052FF] bg-white font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
+                  {match.avatar.image ? (
+                    <Image
+                      src={match.avatar.image}
+                      alt={`${match.title} profile`}
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-cover"
+                      style={match.avatar.imageStyle}
+                    />
+                  ) : (
+                    match.avatar.initials
+                  )}
                 </div>
               </div>
 

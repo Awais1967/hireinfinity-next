@@ -5,25 +5,10 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Bot,
-  CheckCircle2,
   ChevronDown,
   Cloud,
-  Code2,
-  Container,
-  Database,
-  Eye,
-  Gauge,
-  Infinity,
   Laptop,
-  Layers3,
-  Leaf,
-  Monitor,
-  Palette,
-  Send,
-  Server,
   Smartphone,
-  TabletSmartphone,
-  Terminal,
   Zap,
 } from "lucide-react";
 import { LinkButton } from "../../common/ui/LinkButton";
@@ -38,28 +23,28 @@ const technologyFilters = [
   { id: "qa", label: "QA Automation", icon: Bot },
 ];
 
-const technologyIconStyles = {
-  React: ["text-cyan-500", Infinity],
-  "Next.js": ["text-slate-950", Terminal],
-  "Node.js": ["text-emerald-600", Server],
-  Python: ["text-sky-500", Code2],
-  Flutter: ["text-blue-500", Smartphone],
-  "React Native": ["text-cyan-500", TabletSmartphone],
-  Laravel: ["text-rose-500", Layers3],
-  Figma: ["text-orange-500", Palette],
-  AWS: ["text-amber-500", Cloud],
-  DevOps: ["text-indigo-500", Infinity],
-  "QA Automation": ["text-red-500", Gauge],
-  TypeScript: ["text-blue-600", Code2],
-  Kubernetes: ["text-blue-500", Container],
-  FastAPI: ["text-teal-500", Zap],
-  GCP: ["text-sky-500", Cloud],
-  PostgreSQL: ["text-blue-500", Database],
-  Terraform: ["text-violet-500", Layers3],
-  Postman: ["text-orange-500", Send],
-  Cypress: ["text-emerald-500", CheckCircle2],
-  Playwright: ["text-pink-500", Eye],
-  Selenium: ["text-green-600", Leaf],
+const technologyLogos = {
+  React: "https://cdn.simpleicons.org/react/61DAFB",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs/000000",
+  "Node.js": "https://cdn.simpleicons.org/nodedotjs/5FA04E",
+  Python: "https://cdn.simpleicons.org/python/3776AB",
+  Flutter: "https://cdn.simpleicons.org/flutter/02569B",
+  "React Native": "https://cdn.simpleicons.org/react/61DAFB",
+  Laravel: "https://cdn.simpleicons.org/laravel/FF2D20",
+  Figma: "https://cdn.simpleicons.org/figma/F24E1E",
+  AWS: "https://cdn.simpleicons.org/amazonaws/FF9900",
+  DevOps: "https://cdn.simpleicons.org/azuredevops/0078D7",
+  "QA Automation": "https://cdn.simpleicons.org/testinglibrary/E33332",
+  TypeScript: "https://cdn.simpleicons.org/typescript/3178C6",
+  Kubernetes: "https://cdn.simpleicons.org/kubernetes/326CE5",
+  FastAPI: "https://cdn.simpleicons.org/fastapi/009688",
+  GCP: "https://cdn.simpleicons.org/googlecloud/4285F4",
+  PostgreSQL: "https://cdn.simpleicons.org/postgresql/4169E1",
+  Terraform: "https://cdn.simpleicons.org/terraform/844FBA",
+  Postman: "https://cdn.simpleicons.org/postman/FF6C37",
+  Cypress: "https://cdn.simpleicons.org/cypress/69D3A7",
+  Playwright: "https://cdn.simpleicons.org/playwright/2EAD33",
+  Selenium: "https://cdn.simpleicons.org/selenium/43B02A",
 };
 
 const technologyGroups = {
@@ -112,7 +97,7 @@ function TechnologyChips() {
 
           <motion.div key={activeFilter} variants={staggerContainer} initial="hidden" animate="visible" className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
             {displayedTechnologyChips.map((chip) => {
-              const [iconColor, Icon = Monitor] = technologyIconStyles[chip] || ["text-[#0052FF]", Monitor];
+              const logoSrc = technologyLogos[chip];
 
               return (
                 <motion.span
@@ -120,7 +105,11 @@ function TechnologyChips() {
                   variants={fadeUp}
                   className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/75 px-4 py-2.5 font-mono text-xs font-bold text-slate-800 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white"
                 >
-                  <Icon className={`h-4 w-4 ${iconColor}`} />
+                  {logoSrc ? (
+                    <img src={logoSrc} alt="" className="h-4 w-4 shrink-0 object-contain" loading="lazy" />
+                  ) : (
+                    <Zap className="h-4 w-4 shrink-0 text-[#0052FF]" />
+                  )}
                   {chip}
                 </motion.span>
               );

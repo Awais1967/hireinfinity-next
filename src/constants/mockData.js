@@ -297,6 +297,8 @@ export const heroMatches = [
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     avatar: {
       initials: "LF",
+      image: "/assets/images/profile1.png",
+      imageStyle: { transform: "scale(1.55)" },
       accent: "from-blue-500 via-indigo-500 to-sky-400",
     },
   },
@@ -308,6 +310,8 @@ export const heroMatches = [
     skills: ["Node.js", "TypeScript", "PostgreSQL", "Redis"],
     avatar: {
       initials: "SB",
+      image: "/assets/images/profile2.png",
+      imageStyle: { transform: "scale(1.2)" },
       accent: "from-violet-500 via-blue-500 to-cyan-400",
     },
   },
@@ -319,6 +323,8 @@ export const heroMatches = [
     skills: ["React Native", "TypeScript", "iOS/Android SDK", "Expo"],
     avatar: {
       initials: "SR",
+      image: "/assets/images/profile4.png",
+      imageStyle: { objectPosition: "43% center", transform: "scale(1.08)" },
       accent: "from-emerald-500 via-teal-500 to-cyan-400",
     },
   },

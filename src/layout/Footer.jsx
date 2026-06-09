@@ -31,8 +31,10 @@ export function Footer() {
         <div className="grid gap-10 border-b border-slate-200 pb-12 md:grid-cols-[1.5fr_0.75fr_1fr] md:gap-14">
           <div className="space-y-4">
             <LinkButton to="/" className="inline-flex flex-col text-left">
-              <span className="font-display text-2xl font-bold tracking-tight text-slate-950">
-                Hire<span className="text-[#0052FF]">Infinity</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="font-display text-2xl font-bold tracking-tight text-slate-950">
+                  Hire<span className="text-[#0052FF]">Infinity</span>
+                </span>
               </span>
               <span className="-mt-1 font-mono text-[10px] font-extrabold uppercase tracking-widest text-slate-600">A brand of Infinity Softwares</span>
             </LinkButton>
@@ -64,7 +66,7 @@ export function Footer() {
             <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-900">Credentials</h4>
             <div className="relative flex h-32 flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between">
-                <span className="font-display text-lg font-bold text-slate-800">Clutch</span>
+                <Image src="/assets/images/download.png" alt="Clutch" width={96} height={28} className="h-7 w-auto object-contain" />
                 <Award className="h-5 w-5 text-blue-600" />
               </div>
               <div>
@@ -83,21 +85,22 @@ export function Footer() {
         </div>
 
         <div className="pt-8 text-xs text-slate-500">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
-              <Image src="/assets/images/applogo.svg" alt="HireInfinity logo" width={24} height={24} className="h-6 w-6 shrink-0 object-contain" />
+          <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:justify-start">
+              <Image src="/assets/images/infiniti.png" alt="HireInfinity logo" width={14} height={24} className="h-6 w-auto -translate-y-0.5 shrink-0 object-contain mb-3" />
               <span>&copy; 2026 HireInfinity. All rights reserved.</span>
+              <span className="text-slate-300">•</span>
+              <span className="font-mono text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
+                A brand of Infinity Softwares
+              </span>
             </div>
-            <span className="inline-flex items-center font-mono text-[10px] font-extrabold uppercase tracking-wider text-slate-600">
-              A brand of Infinity Softwares
-            </span>
-          </div>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:justify-end">
-            <LinkButton to="/contact" className="hover:text-blue-600">Book a Free Call</LinkButton>
-            <span className="text-slate-300">|</span>
-            <span className="cursor-pointer text-slate-400 hover:text-blue-600">Privacy Policy</span>
-            <span className="text-slate-300">|</span>
-            <span className="cursor-pointer text-slate-400 hover:text-blue-600">Terms of Service</span>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-end">
+              <LinkButton to="/contact" className="hover:text-blue-600">Book a Free Call</LinkButton>
+              <span className="text-slate-300">|</span>
+              <span className="cursor-pointer text-slate-400 hover:text-blue-600">Privacy Policy</span>
+              <span className="text-slate-300">|</span>
+              <span className="cursor-pointer text-slate-400 hover:text-blue-600">Terms of Service</span>
+            </div>
           </div>
         </div>
       </div>
