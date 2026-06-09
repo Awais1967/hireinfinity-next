@@ -66,7 +66,7 @@ export function Footer() {
             <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-900">Credentials</h4>
             <div className="relative flex h-32 flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between">
-                <Image src="/assets/images/download.png" alt="Clutch" width={96} height={28} className="h-7 w-auto object-contain" />
+                <Image src="/assets/images/Clutch logo.png" alt="Clutch" width={96} height={28} className="h-7 w-auto object-contain" />
                 <Award className="h-5 w-5 text-blue-600" />
               </div>
               <div>

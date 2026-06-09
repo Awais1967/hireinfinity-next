@@ -234,7 +234,7 @@ export function PricingCalculator() {
               </div>
               <div className="flex items-center justify-between gap-5 rounded-xl border border-slate-200 bg-white/70 p-5">
                 <div>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">On-Shore Tax Heavy Load</p>
+                  {/* <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400">On-Shore Tax Heavy Load</p> */}
                   <p className="mt-2 font-display text-sm font-bold text-slate-950">Add US Burden (+25%)</p>
                 </div>
                 <button
