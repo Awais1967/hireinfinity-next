@@ -169,14 +169,14 @@ export function PricingCalculator() {
                 const Icon = role.icon;
                 const count = counts[role.id] || 0;
                 return (
-                  <div key={role.id} className="grid gap-3 py-4 sm:grid-cols-[minmax(0,1fr)_170px] sm:items-center">
-                    <div className="flex min-w-0 items-start gap-3 sm:items-center sm:gap-4">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950">
-                        <Icon className="h-5 w-5" />
+                  <div key={role.id} className="grid grid-cols-[minmax(0,1fr)_104px] items-center gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_170px] sm:gap-4">
+                    <div className="flex min-w-0 items-center gap-2.5 sm:gap-4">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950 sm:h-10 sm:w-10">
+                        <Icon className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
                       </span>
                       <div className="min-w-0 flex-1">
-                        <h3 className="font-display text-[15px] font-bold leading-snug text-slate-950 sm:text-base">{role.name}</h3>
-                        <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[9px] font-bold uppercase tracking-wider text-slate-500 sm:text-[10px]">
+                        <h3 className="truncate font-display text-[13px] font-bold leading-snug text-slate-950 sm:text-base">{role.name}</h3>
+                        <p className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-[8px] font-bold uppercase tracking-wider text-slate-500 sm:gap-x-2 sm:text-[10px]">
                           <span>Exp: {role.level}</span>
                           <span className="text-slate-300">&bull;</span>
                           <span>
@@ -185,24 +185,24 @@ export function PricingCalculator() {
                         </p>
                       </div>
                     </div>
-                    <div className="ml-[52px] flex items-center justify-end gap-3 sm:ml-0 sm:gap-4">
+                    <div className="flex items-center justify-end gap-2 sm:gap-4">
                       <button
                         type="button"
                         onClick={() => updateCount(role.id, -1)}
                         disabled={count === 0}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF] disabled:cursor-not-allowed disabled:opacity-40"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF] disabled:cursor-not-allowed disabled:opacity-40 sm:h-9 sm:w-9"
                         aria-label={`Decrease ${role.name}`}
                       >
-                        <Minus className="h-4 w-4" />
+                        <Minus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </button>
-                      <span className="w-4 text-center font-mono text-sm font-bold text-[#0052FF]">{count}</span>
+                      <span className="w-3 text-center font-mono text-sm font-bold text-[#0052FF] sm:w-4">{count}</span>
                       <button
                         type="button"
                         onClick={() => updateCount(role.id, 1)}
-                        className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF]"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition-colors hover:border-blue-200 hover:text-[#0052FF] sm:h-9 sm:w-9"
                         aria-label={`Increase ${role.name}`}
                       >
-                        <Plus className="h-4 w-4" />
+                        <Plus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </button>
                     </div>
                   </div>
