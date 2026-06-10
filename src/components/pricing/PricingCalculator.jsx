@@ -122,9 +122,9 @@ export function PricingCalculator() {
                 <Zap className="h-3.5 w-3.5" />
                 Custom Squad Generator
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-                <Building2 className="h-3.5 w-3.5" />
-                {activeCount} Specialists Active
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#00AC69]/35 bg-[#107052] px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-50">
+                <span>Specialists Active</span>
+                <span className="rounded-full bg-white/10 px-2 py-0.5 text-[#33ca90]">{activeCount}</span>
               </span>
             </div>
             <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-slate-950">Interactive Cost & Custom Savings Calculator</h2>

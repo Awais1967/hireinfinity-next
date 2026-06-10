@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Script from "next/script";
 import { Clock, CreditCard, Mail, ShieldCheck } from "lucide-react";
 import {
   budgetOptions,
   contactInfoItems,
-  cstTimeSlots,
-  june2026AvailableDays,
   seniorityOptions,
   stackOptions,
   timelineOptions,
@@ -90,11 +89,8 @@ export function Contact() {
     timeline: "Immediate (less than 5 days)",
     message: "",
   });
-  const [selectedDay, setSelectedDay] = useState(25);
-  const [selectedSlot, setSelectedSlot] = useState("");
 
   const onChange = (event) => setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
-  const calendarCells = [null, ...Array.from({ length: 30 }, (_, index) => index + 1)];
 
   return (
     <main className="min-h-screen bg-[#fbfcfe] bg-[radial-gradient(#dbe3ee_1px,transparent_1px)] [background-size:22px_22px]">
@@ -185,80 +181,17 @@ export function Contact() {
           <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_16px_42px_rgba(15,23,42,0.04)] sm:p-8">
             <div className="mb-5">
               <h2 className="font-display text-2xl font-bold tracking-tight text-slate-950">Instant Scheduler</h2>
-              <p className="mt-2 font-mono text-xs font-semibold text-slate-950">Reserve your 15-minute alignment call directly.</p>
+              <p className="mt-2 font-mono text-xs font-semibold text-slate-950">Reserve your 30-minute alignment call directly.</p>
             </div>
 
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
-                <span className="font-display text-sm font-bold text-slate-950">June 2026</span>
-                <span className="font-mono text-xs font-bold text-slate-400">Standard CST Timezone</span>
-              </div>
-
-              <div className="mt-5 grid grid-cols-7 gap-2 text-center font-mono text-xs">
-                {["S", "M", "T", "W", "T", "F", "S"].map((weekday, index) => (
-                  <span key={`${weekday}-${index}`} className="font-bold text-slate-400">
-                    {weekday}
-                  </span>
-                ))}
-                {calendarCells.map((day, index) => {
-                  if (!day) return <span key={`blank-${index}`} />;
-
-                  const isAvailable = june2026AvailableDays.includes(day);
-                  const isSelected = selectedDay === day;
-                  const isClickable = isAvailable || day === 25;
-
-                  return (
-                    <button
-                      key={day}
-                      type="button"
-                      disabled={!isClickable}
-                      onClick={() => {
-                        setSelectedDay(day);
-                        setSelectedSlot("");
-                      }}
-                      className={`h-8 rounded-md text-xs font-bold transition-all ${
-                        isSelected
-                          ? "bg-[#0052FF] text-white shadow-[0_8px_18px_rgba(0,82,255,0.22)]"
-                          : isAvailable
-                            ? "border border-blue-100 bg-blue-50 text-[#0052FF] hover:border-blue-300"
-                            : "text-slate-700"
-                      } ${!isClickable ? "cursor-default" : ""}`}
-                    >
-                      {day}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="mt-5 border-t border-slate-200 pt-4">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
-                  Available time slots (CST) for June {selectedDay}, 2026
-                </p>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {cstTimeSlots.map((time) => (
-                    <button
-                      key={time}
-                      type="button"
-                      onClick={() => setSelectedSlot(time)}
-                      className={`rounded-lg border px-3 py-3 text-center font-mono text-xs font-bold transition-all ${
-                        selectedSlot === time
-                          ? "border-[#0052FF] bg-[#0052FF] text-white"
-                          : "border-slate-200 bg-white text-slate-800 hover:border-blue-200 hover:text-[#0052FF]"
-                      }`}
-                    >
-                      {time}
-                    </button>
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  disabled
-                  className="mt-4 w-full cursor-not-allowed rounded-lg border border-slate-200 bg-slate-100 py-3.5 font-display text-xs font-bold uppercase tracking-[0.08em] text-slate-400"
-                >
-                  Select a Day & Time Slot Above
-                </button>
-              </div>
+            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+              <div
+                className="calendly-inline-widget min-w-[320px]"
+                data-url="https://calendly.com/hireinfinity/30min?hide_event_type_details=1"
+                style={{ height: 700 }}
+              />
             </div>
+            <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
 
             <div className="mt-8 space-y-4 border-t border-slate-950 pt-6">
               <ContactInfoRow icon={Mail} label="Direct Communications" value="hello@hireinfinity.co" />
@@ -270,6 +203,5 @@ export function Contact() {
     </main>
   );
 }
-
 
 
