@@ -97,9 +97,9 @@ export function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-end">
               <LinkButton to="/contact" className="hover:text-blue-600">Book a Free Call</LinkButton>
               <span className="text-slate-300">|</span>
-              <span className="cursor-pointer text-slate-400 hover:text-blue-600">Privacy Policy</span>
+              <LinkButton to="/privacy-policy" className="text-slate-400 hover:text-blue-600">Privacy Policy</LinkButton>
               <span className="text-slate-300">|</span>
-              <span className="cursor-pointer text-slate-400 hover:text-blue-600">Terms of Service</span>
+              <LinkButton to="/terms-of-service" className="text-slate-400 hover:text-blue-600">Terms of Service</LinkButton>
             </div>
           </div>
         </div>
