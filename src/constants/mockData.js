@@ -852,7 +852,7 @@ export const landingFaqs = [
 
 export const caseStudyScaleOptions = {
   1: ["1 Senior Dedicated Developer", "FEATURE BURNER", "18 - 25", "3 - 5 / week", "12 hours / mo", "$2,200"],
-  2: ["2 Senior Dedicated Developers", "VELOCITY DUO", "38 - 50", "6 - 10 / week", "24 hours / mo", "$4,400"],
+  2: ["2 Senior Dedicated Developers", "VELOCITY DUO", "38-50", "6 - 10 / week", "24 hours/mo", "$4,400"],
   3: ["Growth Team Pod (2.5 FTE)", "MARKET ACCELERATOR", "55 - 75", "10 - 15 / week", "40 hours / mo", "$4,725"],
   4: ["Scale Team Pod (4.0 FTE)", "ENTERPRISE ENGINE", "85 - 110", "15 - 25 / week", "75 hours / mo", "$6,750"],
 };

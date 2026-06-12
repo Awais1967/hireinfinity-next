@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { Award, Star } from "lucide-react";
 import { LinkButton } from "../common/ui/LinkButton";
 import { scrollToSection } from "../common/utils/navigation";
@@ -56,14 +57,23 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               <LinkButton to="/" className="block text-left text-slate-600 hover:text-blue-600">Homepage</LinkButton>
               <LinkButton to="/engineers" className="block text-left text-slate-600 hover:text-blue-600">Available Engineers</LinkButton>
-              <button type="button" onClick={() => scrollToSection("how-it-works", router)} className="block text-left text-slate-600 hover:text-blue-600">How It Works</button>
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection("how-it-works", router)}
+                className="block origin-left text-left text-slate-600 hover:text-blue-600"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
+              >
+                How It Works
+              </motion.button>
               <LinkButton to="/pricing" className="block text-left text-slate-600 hover:text-blue-600">Pricing</LinkButton>
               <LinkButton to="/case-studies" className="block text-left text-slate-600 hover:text-blue-600">Case Studies</LinkButton>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-900">Credentials</h4>
+            {/* <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-900">Credentials</h4> */}
             <div className="relative flex h-32 flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <Image src="/assets/images/Clutch logo.png" alt="Clutch" width={96} height={28} className="h-7 w-auto object-contain" />
@@ -97,9 +107,9 @@ export function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-end">
               <LinkButton to="/contact" className="hover:text-blue-600">Book a Free Call</LinkButton>
               <span className="text-slate-300">|</span>
-              <LinkButton to="/privacy-policy" className="text-slate-400 hover:text-blue-600">Privacy Policy</LinkButton>
+              <LinkButton to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600">Privacy Policy</LinkButton>
               <span className="text-slate-300">|</span>
-              <LinkButton to="/terms-of-service" className="text-slate-400 hover:text-blue-600">Terms of Service</LinkButton>
+              <LinkButton to="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-600">Terms of Service</LinkButton>
             </div>
           </div>
         </div>

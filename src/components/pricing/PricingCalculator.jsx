@@ -171,7 +171,7 @@ export function PricingCalculator() {
                 return (
                   <div key={role.id} className="grid grid-cols-[minmax(0,1fr)_104px] items-center gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_170px] sm:gap-4">
                     <div className="flex min-w-0 items-center gap-2.5 sm:gap-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950 sm:h-10 sm:w-10">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-[#0052FF] sm:h-10 sm:w-10">
                         <Icon className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
                       </span>
                       <div className="min-w-0 flex-1">
@@ -213,8 +213,8 @@ export function PricingCalculator() {
             <div className="mt-6 grid gap-4 border-t border-slate-200 pt-6 sm:grid-cols-2">
               <div className="rounded-xl border border-slate-200 bg-white/70 p-5">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">Engagement Runtime Term</p>
-                  <span className="rounded-full bg-slate-950 px-3 py-1 font-mono text-[10px] font-bold text-white">{term} Months</span>
+                  <p className="whitespace-nowrap font-mono text-[9px] font-bold uppercase tracking-wide text-slate-500 sm:text-[10px]">Engagement Runtime Term</p>
+                  <span className="whitespace-nowrap rounded-full bg-[#0052FF] px-3 py-1 font-mono text-[10px] font-bold text-white">{term} Months</span>
                 </div>
                 <input
                   type="range"
@@ -266,7 +266,7 @@ export function PricingCalculator() {
 
             <Link
               href="/contact"
-              className="mt-auto inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+              className="mt-6 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-sm font-bold uppercase tracking-wider text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
             >
               Lock In Custom Setup
               <ArrowRight className="h-5 w-5" />

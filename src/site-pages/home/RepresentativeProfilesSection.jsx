@@ -41,7 +41,7 @@ export function RepresentativeProfilesSection() {
   return (
     <section className="border-y border-slate-200 bg-[#eef1f5]">
       <div className="mx-auto max-w-7xl px-4 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-20 lg:px-8 lg:pt-20 lg:pb-24">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col items-center gap-5 text-center">
           <div>
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.32em] text-[#0052FF]">Available Roster Preview</p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-3xl">Representative Engineer Profiles</h2>
@@ -78,5 +78,4 @@ export function RepresentativeProfilesSection() {
     </section>
   );
 }
-
 

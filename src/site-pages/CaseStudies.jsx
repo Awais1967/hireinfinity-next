@@ -25,7 +25,7 @@ export function CaseStudies() {
 
         <div className="grid items-stretch gap-8 lg:grid-cols-3">
           {caseStudies.map((study) => (
-            <div key={study.industry} className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-xs transition-all hover:border-blue-200 hover:shadow-lg">
+            <div key={study.industry} className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-8 shadow-xs transition-all hover:border-blue-200 hover:shadow-lg">
               <div className="space-y-6">
                 <div>
                   <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-slate-400">{study.client}</span>
@@ -41,14 +41,14 @@ export function CaseStudies() {
                 </div>
                 <div className="rounded border-t border-slate-100 bg-slate-50/50 p-3 text-sm italic leading-relaxed text-slate-500">"{study.quote}"</div>
               </div>
-              <div className="mt-6 border-t border-slate-100 pt-5">
+              <div className="mt-auto min-h-[104px] border-t border-slate-100 pt-5">
                 <div className="flex items-center justify-between font-mono text-xs">
                   <span className="text-slate-400">Duration:</span>
-                  <span className="font-bold text-slate-900">{study.duration}</span>
+                  <span className="font-bold text-[#0052FF]">{study.duration}</span>
                 </div>
-                <div className="mt-3 flex flex-wrap gap-1.5">
+                <div className="mt-3 flex flex-wrap justify-end gap-1.5">
                   {study.stack.map((item) => (
-                    <span key={item} className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 font-mono text-[10px] tracking-wide text-slate-600">
+                    <span key={item} className="rounded border border-blue-100 bg-blue-50 px-2 py-0.5 font-mono text-[10px] tracking-wide text-[#0052FF]">
                       {item}
                     </span>
                   ))}
@@ -107,9 +107,9 @@ export function CaseStudies() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-6">
-              <Metric label="Estimated Sprint Points" value={active[2]} suffix="points/sprint" />
+              <Metric label="Estimated Sprint Points" value={active[2]} suffix="points/sprint" blue />
               <Metric label="Weekly Code Deploys" value={active[3]} blue />
-              <Metric label="CTO/PM Sprint Hours Saved" value={active[4]} green />
+              <Metric label="CTO/PM Sprint Hours Saved" value={active[4]} blue />
               <div className="flex flex-col justify-between rounded-xl border border-blue-100 bg-blue-50/40 p-5">
                 <div>
                   <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-[#0052FF]">Special pilot offer cost</span>
@@ -127,11 +127,11 @@ export function CaseStudies() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-5xl border-y border-slate-200 px-4 py-2 text-center">
+        {/* <div className="mx-auto max-w-5xl border-y border-slate-200 px-4 py-2 text-center">
           <p className="mx-auto max-w-4xl font-mono text-[11px] leading-6 text-slate-600">
             <span className="font-bold text-slate-800">Privacy Shield Note:</span> Client names anonymized on request. Real technical scopes, architecture outcomes, and metric ratios have been audited and certified by Infinity Softwares Delivery.
           </p>
-        </div>
+        </div> */}
 
         <div className="mx-auto max-w-4xl rounded-3xl border border-slate-800 bg-slate-900 p-8 text-center text-white shadow-lg sm:p-12">
           <h3 className="font-display text-2xl font-semibold">Ready to scale your product velocity?</h3>
@@ -147,5 +147,3 @@ export function CaseStudies() {
     </div>
   );
 }
-
-

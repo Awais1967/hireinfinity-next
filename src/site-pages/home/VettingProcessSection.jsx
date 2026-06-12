@@ -57,49 +57,54 @@ function TimelineStep({ step, isLast }) {
 export function VettingProcessSection() {
   return (
     <section className="border-b border-slate-200 bg-[#f8fafc]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.25fr_0.95fr] lg:gap-20 lg:px-8 lg:py-24">
-        <div>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.34em] text-[#0052FF]">Vetting Process</p>
           <h2 className="mt-5 font-display text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
             How we vet every engineer.
           </h2>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            No AI shortcuts — we vet and match candidates 100% manually with a human touch at every step.
-          </p>
-
-          <ol className="mt-12">
-            {vettingSteps.map((step, index) => (
-              <TimelineStep key={step.title} step={step} isLast={index === vettingSteps.length - 1} />
-            ))}
-          </ol>
         </div>
 
-        <div className="flex flex-col justify-center">
-          <div className="rounded-2xl border border-slate-200 bg-white/70 p-7 shadow-[0_10px_28px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
-            <h3 className="font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Only the top 5%</h3>
-            <p className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">
-              Of applicants become fully vetted HireInfinity talent.
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.25fr_0.95fr] lg:gap-20">
+          <div>
+            <p className="max-w-3xl text-lg leading-8 text-slate-600">
+              No AI shortcuts - we vet and match candidates 100% manually with a human touch at every step.
             </p>
 
-            <div className="mt-8 border-t border-slate-200 pt-7">
-              <ul className="space-y-5">
-                {checklist.map((item) => (
-                  <li key={item} className="grid grid-cols-[18px_1fr] gap-3 text-sm leading-6 text-slate-700 sm:text-base">
-                    <Check className="mt-1 h-4 w-4 text-[#0052FF]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ol className="mt-12">
+              {vettingSteps.map((step, index) => (
+                <TimelineStep key={step.title} step={step} isLast={index === vettingSteps.length - 1} />
+              ))}
+            </ol>
           </div>
 
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-base font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
-          >
-            Book a Free Call
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+          <div className="flex flex-col justify-center">
+            <div className="rounded-2xl border border-slate-200 bg-white/70 p-7 shadow-[0_10px_28px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10">
+              <h3 className="font-display text-4xl font-bold leading-tight tracking-tight text-slate-950">Only the top 5%</h3>
+              <p className="mt-3 font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">
+                Of applicants become fully vetted HireInfinity talent.
+              </p>
+
+              <div className="mt-8 border-t border-slate-200 pt-7">
+                <ul className="space-y-5">
+                  {checklist.map((item) => (
+                    <li key={item} className="grid grid-cols-[18px_1fr] gap-3 text-sm leading-6 text-slate-700 sm:text-base">
+                      <Check className="mt-1 h-4 w-4 text-[#0052FF]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-[#0052FF] px-8 py-4 font-display text-base font-bold text-white shadow-[0_12px_24px_rgba(0,82,255,0.22)] transition-all hover:-translate-y-0.5 hover:bg-blue-700"
+            >
+              Book a Free Call
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

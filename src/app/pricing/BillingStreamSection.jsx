@@ -137,13 +137,13 @@ export function BillingStreamSection() {
       </div>
 
       <div className="mx-auto mt-12 max-w-6xl overflow-hidden rounded-2xl border border-slate-950 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
-        <div className="px-6 py-8 sm:px-8">
-          <div className="flex items-start gap-3">
-            <BriefcaseBusiness className="mt-1 h-5 w-5 text-[#0052FF]" />
-            <div>
+        <div className="px-6 py-8 text-center sm:px-8">
+          <div>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <BriefcaseBusiness className="h-5 w-5 text-[#0052FF]" />
               <h3 className="font-display text-2xl font-bold tracking-tight text-slate-950">{activeStream.title}</h3>
-              <p className="mt-2 font-mono text-xs font-medium text-slate-600">{activeStream.description}</p>
             </div>
+            <p className="mt-2 font-mono text-xs font-medium text-slate-600">{activeStream.description}</p>
           </div>
         </div>
 

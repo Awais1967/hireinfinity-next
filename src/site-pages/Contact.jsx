@@ -40,11 +40,8 @@ function SelectField({ label, children, className = "", ...props }) {
 }
 
 function InfoItem({ item, index }) {
-  const Icon = item.tone === "blue" ? ShieldCheck : CreditCard;
-  const toneClasses =
-    item.tone === "blue"
-      ? "border-blue-100 bg-blue-50 text-[#0052FF]"
-      : "border-emerald-100 bg-emerald-50 text-emerald-600";
+  const Icon = index === 1 ? CreditCard : ShieldCheck;
+  const toneClasses = "border-blue-100 bg-blue-50 text-[#0052FF]";
 
   return (
     <div
